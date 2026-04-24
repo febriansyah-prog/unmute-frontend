@@ -3,7 +3,11 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+// Robust API URL detection
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 
+                (typeof window !== "undefined" && window.location.hostname === "localhost" 
+                  ? "http://localhost:3001" 
+                  : "https://unmute-backend-production.up.railway.app");
 
 type School = {
   id: string;
