@@ -3,7 +3,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+// Robust API URL detection
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 
+                (typeof window !== "undefined" && window.location.hostname === "localhost" 
+                  ? "http://localhost:3001" 
+                  : "https://unmute-backend-production.up.railway.app");
 
 type School = {
   id: string;
@@ -181,10 +185,15 @@ export default function AdminDashboard() {
   };
 
   const handleDeleteBooking = async (booking: Booking) => {
-    const confirmDelete = confirm(`Yakin ingin menghapus booking ${booking.school_name}?`);
-    if (!confirmDelete) return;
+    if (typeof window === "undefined") return;
+    const confirmed = window.confirm(`Yakin ingin menghapus booking ${booking.school_name}?`);
+    if (!confirmed) return;
+    
     try {
-      const res = await fetch(`${API_URL}/api/bookings/${booking.id}`, { method: "DELETE" });
+      const res = await fetch(`${API_URL}/api/bookings/${booking.id}`, { 
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" }
+      });
       const result = await res.json().catch(() => ({}));
       if (!res.ok) {
         showToast("error", result.message || "Gagal menghapus booking");
