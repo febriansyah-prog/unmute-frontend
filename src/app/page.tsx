@@ -259,10 +259,7 @@ export default function Home() {
       <nav className="sticky top-0 z-50 glass-card px-4 py-3 sm:px-6 mb-8 border-b border-white/50">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-brand-purple rounded-xl flex items-center justify-center text-brand-lime font-bold text-xl premium-shadow">
-              U
-            </div>
-            <span className="text-xl font-black tracking-tighter text-brand-purple hidden sm:block uppercase">Unmute <span className="text-brand-purple-light opacity-50">by Unifers</span></span>
+            <Image src="/logo.png" alt="Unmute by Unifers" width={150} height={50} className="h-10 sm:h-12 w-auto object-contain" priority />
           </div>
           <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-gray-500">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>

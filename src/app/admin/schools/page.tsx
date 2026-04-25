@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 // Robust API URL detection
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 
@@ -211,7 +212,8 @@ export default function AdminSchoolsPage() {
       <nav className="sticky top-0 z-50 glass-card border-b border-white/50 px-6 py-4 mb-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-brand-purple rounded-xl flex items-center justify-center text-brand-lime font-black text-xl premium-shadow transform rotate-3">P</div>
+            <Image src="/logo.png" alt="Unmute by Unifers" width={120} height={40} className="h-8 sm:h-10 w-auto object-contain" priority />
+            <div className="h-6 w-[2px] bg-gray-200 mx-2 hidden sm:block"></div>
             <h1 className="text-xl font-black uppercase tracking-tight text-brand-purple-dark hidden sm:block">Panel <span className="text-brand-purple">Admin</span></h1>
             
             <button

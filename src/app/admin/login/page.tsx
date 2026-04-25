@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function AdminLoginPage() {
   const [username, setUsername] = useState("");
@@ -35,9 +36,7 @@ export default function AdminLoginPage() {
 
       <div className="w-full max-w-md glass-card rounded-3xl p-8 sm:p-12 premium-shadow animate-fade-in relative z-10 border border-white/40">
         <div className="mb-10 text-center space-y-2">
-          <div className="w-16 h-16 bg-brand-purple rounded-2xl flex items-center justify-center text-brand-lime font-black text-3xl mx-auto mb-6 premium-shadow transform -rotate-6">
-            U
-          </div>
+          <Image src="/logo.png" alt="Unmute by Unifers" width={200} height={80} className="h-16 w-auto object-contain mx-auto mb-6" priority />
           <h1 className="text-3xl font-black text-brand-purple-dark tracking-tight uppercase">Admin <span className="text-brand-purple">Panel</span></h1>
           <p className="text-gray-500 font-medium">Silakan masuk untuk mengelola data.</p>
         </div>
