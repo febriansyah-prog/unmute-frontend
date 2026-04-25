@@ -112,7 +112,7 @@ export default function AdminDelegatesPage() {
     const visitedBookings = bookings.filter((b) => b.status === "Telah Dikunjungi");
     return visitedBookings.map((b) => {
       const s = schools.find((school) => school.name === b.school_name);
-      return { id: s?.id || "", name: b.school_name };
+      return { id: s?.id || "", name: b.school_name, booking_id: b.id };
     }).filter(s => s.id !== "");
   }, [bookings, schools]);
 
@@ -200,6 +200,33 @@ export default function AdminDelegatesPage() {
     } catch (err) {
       console.error(err);
       showToast("error", "Gagal menghapus siswa");
+    }
+  };
+
+  const handleCancelVisit = async (school: {id: string, name: string, booking_id: string}) => {
+    const confirmed = window.confirm(`PENTING: Menghapus sekolah ${school.name} dari daftar Telah Dikunjungi juga akan MENGHAPUS SEMUA DATA SISWA PERWAKILANNYA.\n\nLanjutkan (Yes / No)?`);
+    if (!confirmed) return;
+
+    setLoading(true);
+    try {
+      // 1. Delete all delegates for this school
+      const delRes = await fetch(`${API_URL}/api/delegates/school/${school.id}`, { method: "DELETE" });
+      if (!delRes.ok) throw new Error("Gagal menghapus data siswa");
+
+      // 2. Reset booking status
+      const statusRes = await fetch(`${API_URL}/api/bookings/${school.booking_id}/status`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "Menunggu" })
+      });
+      if (!statusRes.ok) throw new Error("Gagal mereset status sekolah");
+
+      showToast("success", "Sekolah dan data siswa berhasil dihapus dari kunjungan");
+      await fetchData(); // Refresh table
+    } catch (err) {
+      console.error(err);
+      showToast("error", "Gagal membatalkan kunjungan");
+      setLoading(false);
     }
   };
 
@@ -315,6 +342,13 @@ export default function AdminDelegatesPage() {
                               className="px-4 py-2 rounded-xl bg-brand-lime/20 text-brand-purple-dark font-bold text-xs uppercase tracking-wider hover:bg-brand-lime transition-all flex items-center gap-2"
                             >
                               <span>👁️</span> Lihat Siswa
+                            </button>
+                            <button 
+                              onClick={() => handleCancelVisit(school as any)} 
+                              className="px-4 py-2 rounded-xl bg-red-50 text-red-600 font-bold text-xs uppercase tracking-wider hover:bg-red-600 hover:text-white transition-all flex items-center gap-2 ml-4"
+                              title="Hapus dari daftar kunjungan"
+                            >
+                              <span>🗑️</span> Hapus
                             </button>
                           </div>
                         </td>
