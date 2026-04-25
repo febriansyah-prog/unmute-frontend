@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import MusicPlayer from "@/components/MusicPlayer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { MemoryMatchGame } from "@/components/MemoryMatchGame";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -64,6 +65,7 @@ export default function RootLayout({
           
           <MusicPlayer />
           <ThemeToggle />
+          <MemoryMatchGame />
         </ThemeProvider>
       </body>
     </html>
