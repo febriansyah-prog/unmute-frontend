@@ -4,6 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 
+                (typeof window !== "undefined" && window.location.hostname === "localhost" 
+                  ? "http://localhost:3001" 
+                  : "https://unmute-backend-production.up.railway.app");
+
 export default function AdminLoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -11,21 +16,30 @@ export default function AdminLoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
-    // Mock delay for feel
-    setTimeout(() => {
-      if (username === "admin" && password === "admin123") {
+    try {
+      const res = await fetch(`${API_URL}/api/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+      
+      const data = await res.json();
+      if (res.ok && data.success) {
         localStorage.setItem("admin_auth", "true");
         router.push("/admin");
       } else {
-        setError("Username atau password salah");
-        setLoading(false);
+        setError(data.message || "Username atau password salah");
       }
-    }, 800);
+    } catch (err) {
+      setError("Gagal terhubung ke server");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

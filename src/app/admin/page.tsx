@@ -83,6 +83,14 @@ export default function AdminDashboard() {
   const [editError, setEditError] = useState("");
   const [savingEdit, setSavingEdit] = useState(false);
   const [toast, setToast] = useState<Toast | null>(null);
+  
+  // Password state
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [passwordLoading, setPasswordLoading] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+
   const router = useRouter();
 
   useEffect(() => {
@@ -130,6 +138,34 @@ export default function AdminDashboard() {
   const handleLogout = () => {
     localStorage.removeItem("admin_auth");
     router.push("/admin/login");
+  };
+
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPasswordError("");
+    setPasswordLoading(true);
+    
+    try {
+      const res = await fetch(`${API_URL}/api/change-password`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ oldPassword, newPassword })
+      });
+      const data = await res.json();
+      
+      if (res.ok && data.success) {
+        showToast("success", "Password berhasil diubah");
+        setIsPasswordModalOpen(false);
+        setOldPassword("");
+        setNewPassword("");
+      } else {
+        setPasswordError(data.message || "Gagal mengubah password");
+      }
+    } catch (err) {
+      setPasswordError("Server tidak dapat dihubungi");
+    } finally {
+      setPasswordLoading(false);
+    }
   };
 
   const handleEditBooking = (booking: Booking) => {
@@ -291,6 +327,12 @@ export default function AdminDashboard() {
               className="px-4 py-2 bg-brand-lime/20 text-brand-purple-dark rounded-xl text-sm font-black uppercase tracking-wider hover:bg-brand-lime hover:text-brand-purple-dark transition-all"
             >
               Perwakilan
+            </button>
+            <button
+              onClick={() => setIsPasswordModalOpen(true)}
+              className="px-4 py-2 bg-gray-100 text-gray-600 rounded-xl text-sm font-black uppercase tracking-wider hover:bg-gray-200 transition-all"
+            >
+              Ganti Sandi
             </button>
             <button
               onClick={handleLogout}
@@ -469,6 +511,70 @@ export default function AdminDashboard() {
                 {savingEdit ? "..." : "Simpan"}
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Change Password Modal */}
+      {isPasswordModalOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white w-full max-w-md rounded-3xl p-8 shadow-2xl relative border border-white/20">
+            <button
+              onClick={() => { setIsPasswordModalOpen(false); setPasswordError(""); setOldPassword(""); setNewPassword(""); }}
+              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 bg-gray-100 hover:bg-red-50 rounded-full w-8 h-8 flex items-center justify-center transition-colors"
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-black text-brand-purple-dark uppercase tracking-tight mb-2">Ganti Sandi</h2>
+            <p className="text-sm font-medium text-gray-500 mb-6">Pastikan sandi baru Anda aman dan mudah diingat.</p>
+            
+            {passwordError && (
+              <div className="mb-4 rounded-xl bg-red-50 border border-red-100 p-3 text-sm font-bold text-red-600">
+                {passwordError}
+              </div>
+            )}
+            
+            <form onSubmit={handleChangePassword} className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase tracking-widest text-gray-400 px-1">Sandi Lama</label>
+                <input
+                  type="password"
+                  className="w-full bg-gray-50 rounded-xl border-2 border-gray-100 p-3 outline-none focus:border-brand-purple focus:bg-white transition-all"
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase tracking-widest text-gray-400 px-1">Sandi Baru (Min. 6 Karakter)</label>
+                <input
+                  type="password"
+                  className="w-full bg-gray-50 rounded-xl border-2 border-gray-100 p-3 outline-none focus:border-brand-purple focus:bg-white transition-all"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  minLength={6}
+                  required
+                />
+              </div>
+              <div className="pt-4 flex justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setIsPasswordModalOpen(false)}
+                  className="px-6 py-3 rounded-xl font-bold text-gray-500 hover:bg-gray-100 transition-colors uppercase tracking-wider text-sm"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  disabled={passwordLoading}
+                  className={`px-6 py-3 rounded-xl font-bold text-white uppercase tracking-wider text-sm shadow-lg transition-all ${
+                    passwordLoading ? "bg-gray-400 cursor-not-allowed" : "bg-brand-purple hover:bg-brand-purple-light"
+                  }`}
+                >
+                  {passwordLoading ? "Menyimpan..." : "Simpan Sandi"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
