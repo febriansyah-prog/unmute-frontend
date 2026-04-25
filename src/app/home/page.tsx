@@ -39,12 +39,9 @@ export default function HomePublicPage() {
         <div className="glass-card rounded-[2.5rem] p-10 sm:p-20 text-center premium-shadow relative overflow-hidden border border-white/50">
           <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/5 to-brand-lime/10 -z-10"></div>
           <span className="inline-block px-4 py-1.5 bg-brand-purple/10 text-brand-purple rounded-full text-xs font-black uppercase tracking-widest mb-6 border border-brand-purple/20">Selamat Datang di Unmute</span>
-          <h2 className="text-4xl sm:text-6xl font-black text-brand-purple-dark tracking-tight uppercase leading-tight mb-6">
+          <h2 className="text-4xl sm:text-6xl font-black text-brand-purple-dark tracking-tight uppercase leading-tight mb-10">
             Membangun <span className="text-brand-purple underline decoration-brand-lime decoration-8">Karakter</span> Menginspirasi Negeri
           </h2>
-          <p className="text-gray-500 text-lg sm:text-xl font-medium max-w-3xl mx-auto mb-10">
-            Sebuah inisiatif pengabdian masyarakat oleh Universitas Fajar yang mendedikasikan keahlian akademis untuk memberdayakan potensi siswa-siswi di seluruh Sulawesi Selatan.
-          </p>
 
           <div className="flex flex-col items-center gap-6 sm:gap-8 mb-12 animate-fade-in relative z-10" style={{ animationDelay: '0.2s' }}>
             <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-14 bg-white/40 p-6 sm:p-8 rounded-[2rem] border border-white/60 shadow-xl backdrop-blur-md hover:bg-white/50 transition-colors">
@@ -66,6 +63,10 @@ export default function HomePublicPage() {
               <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <Image src="/logo-unmute-large.png" alt="Unmute by Unifers" width={300} height={150} className="h-32 sm:h-40 w-auto object-contain hover:scale-105 transition-transform duration-500 relative z-10 drop-shadow-2xl" />
             </div>
+            
+            <p className="text-gray-500 text-base sm:text-lg font-medium max-w-3xl mx-auto text-center mt-4 px-4">
+              <strong className="text-brand-purple-dark">Sebuah inisiatif pengabdian masyarakat oleh Universitas Fajar.</strong> Menargetkan pelatihan intensif untuk <strong className="text-brand-purple">5.000 siswa-siswi tingkat SMA, SMK, dan MA</strong> di seluruh Sulawesi Selatan guna mencetak talenta muda yang adaptif di era digital.
+            </p>
           </div>
 
           <div className="flex justify-center gap-4">
@@ -84,7 +85,7 @@ export default function HomePublicPage() {
             </div>
             <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Public Speaking</h3>
             <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
-              Meningkatkan kepercayaan diri dan seni berbicara di depan umum bersama mentor profesional.
+              Meningkatkan kepercayaan diri dan seni berbicara di depan umum secara memukau, dirancang khusus untuk menggali potensi kepemimpinan siswa-siswi di bangku sekolah.
             </p>
           </div>
 
@@ -92,9 +93,9 @@ export default function HomePublicPage() {
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-lime to-brand-lime-hover text-brand-purple-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
               <span className="text-3xl sm:text-4xl">💻</span>
             </div>
-            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Teknologi IT</h3>
+            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Artificial Intelligence (AI)</h3>
             <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
-              Membekali siswa dengan pemahaman teknologi terkini sebagai fondasi menghadapi era digital.
+              Membekali siswa dengan pemahaman dasar Kecerdasan Buatan (AI) serta penerapannya yang inovatif dan etis untuk mendukung proses pembelajaran di dunia pendidikan modern.
             </p>
           </div>
 
@@ -102,9 +103,9 @@ export default function HomePublicPage() {
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
               <span className="text-3xl sm:text-4xl">🚀</span>
             </div>
-            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Dosen Berdampak</h3>
+            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Content Creator</h3>
             <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
-              Wujud nyata pengabdian sivitas akademika Universitas Fajar untuk masyarakat Sulawesi Selatan.
+              Membuka wawasan generasi muda terhadap peluang ekonomi kreatif di era digital, melalui strategi produksi konten visual dan naratif yang positif serta berdampak luas.
             </p>
           </div>
 
