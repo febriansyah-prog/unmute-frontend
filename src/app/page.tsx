@@ -260,6 +260,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image src="/logo.png" alt="Unmute by Unifers" width={150} height={50} className="h-10 sm:h-12 w-auto object-contain" priority />
+            <div className="h-6 w-[2px] bg-gray-200 mx-2 hidden sm:block"></div>
+            <h1 className="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-purple-dark hidden sm:block">Portal <span className="text-brand-purple">Booking</span></h1>
           </div>
           <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-gray-500">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
