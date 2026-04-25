@@ -66,6 +66,7 @@ export default function AdminDelegatesPage() {
     if (isAuth !== "true") {
       router.push("/admin/login");
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setAuthorized(true);
       fetchData();
     }
@@ -79,7 +80,7 @@ export default function AdminDelegatesPage() {
 
   const showToast = (type: "success" | "error", text: string) => setToast({ type, text });
 
-  const fetchData = async () => {
+  async function fetchData() {
     setLoading(true);
     setError("");
     try {
@@ -101,7 +102,7 @@ export default function AdminDelegatesPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   const handleLogout = () => {
     localStorage.removeItem("admin_auth");
@@ -147,7 +148,7 @@ export default function AdminDelegatesPage() {
     } finally {
       setLoadingDelegates(false);
     }
-  };
+  }
 
   const handleSaveDelegate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -188,7 +189,7 @@ export default function AdminDelegatesPage() {
     } finally {
       setSavingDelegate(false);
     }
-  };
+  }
 
   const handleDeleteDelegate = async (id: string, delName: string) => {
     if (!window.confirm(`Yakin ingin menghapus ${delName}?`)) return;
@@ -201,7 +202,7 @@ export default function AdminDelegatesPage() {
       console.error(err);
       showToast("error", "Gagal menghapus siswa");
     }
-  };
+  }
 
   const handleCancelVisit = async (school: {id: string, name: string, booking_id: string}) => {
     const confirmed = window.confirm(`PENTING: Menghapus sekolah ${school.name} dari daftar Telah Dikunjungi juga akan MENGHAPUS SEMUA DATA SISWA PERWAKILANNYA.\n\nLanjutkan (Yes / No)?`);
@@ -228,7 +229,7 @@ export default function AdminDelegatesPage() {
       showToast("error", "Gagal membatalkan kunjungan");
       setLoading(false);
     }
-  };
+  }
 
   const handleEditClick = (d: Delegate) => {
     setDelId(d.id);

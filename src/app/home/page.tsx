@@ -32,6 +32,7 @@ export default function HomePublicPage() {
                 <Link href="/pengumuman/perwakilan" className="px-5 py-4 text-xs font-black text-gray-600 hover:bg-brand-purple/5 hover:text-brand-purple border-t border-gray-50 uppercase tracking-wider">Daftar Siswa Perwakilan</Link>
               </div>
             </div>
+            <ThemeToggle />
           </div>
         </div>
       </nav>

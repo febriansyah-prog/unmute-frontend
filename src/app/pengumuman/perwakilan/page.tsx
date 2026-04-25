@@ -26,7 +26,7 @@ export default function PengumumanPerwakilanPage() {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
+  async function fetchData() {
     setLoading(true);
     try {
       const res = await fetch(`${API_URL}/api/delegates`);
@@ -41,7 +41,7 @@ export default function PengumumanPerwakilanPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <main className="min-h-screen pb-20 overflow-x-hidden">

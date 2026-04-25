@@ -52,6 +52,7 @@ export default function AdminSchoolsPage() {
     if (isAuth !== "true") {
       router.push("/admin/login");
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setAuthorized(true);
       fetchData();
     }
@@ -63,7 +64,7 @@ export default function AdminSchoolsPage() {
     return () => clearTimeout(timer);
   }, [toast]);
 
-  const fetchData = async () => {
+  async function fetchData() {
     setLoading(true);
     setError("");
     try {
@@ -141,7 +142,7 @@ export default function AdminSchoolsPage() {
   const openEditModal = (school: School) => {
     setEditingSchool(school);
     setEditSchoolName(school.name);
-  };
+  }
 
   const handleEditSchool = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -174,7 +175,7 @@ export default function AdminSchoolsPage() {
     } finally {
       setSavingEdit(false);
     }
-  };
+  }
 
   const handleDeleteSchool = async (school: School) => {
     if (bookedSchoolNames.has(school.name)) {

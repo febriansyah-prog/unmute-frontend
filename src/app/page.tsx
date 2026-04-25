@@ -201,7 +201,7 @@ export default function Home() {
     if (status === "holiday" || status === "blocked") return `${base} bg-red-50 text-red-400 border-red-100 cursor-not-allowed`;
 
     return `${base} bg-white text-brand-purple-dark border-gray-100 hover:border-brand-purple hover:bg-brand-purple/5 hover:scale-105`;
-  };
+  }
 
   const handleDateClick = (clickedDate: Date) => {
     const status = getDateStatus(clickedDate);
@@ -209,7 +209,7 @@ export default function Home() {
     setDate(formatDateLocal(clickedDate));
     setError("");
     setSuccess("");
-  };
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -260,7 +260,7 @@ export default function Home() {
     } finally {
       setSubmitting(false);
     }
-  };
+  }
 
   return (
     <main className="min-h-screen pb-20 overflow-x-hidden">

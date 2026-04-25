@@ -98,6 +98,7 @@ export default function AdminDashboard() {
     if (isAuth !== "true") {
       router.push("/admin/login");
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setAuthorized(true);
       fetchData();
     }
@@ -111,7 +112,7 @@ export default function AdminDashboard() {
 
   const showToast = (type: "success" | "error", text: string) => setToast({ type, text });
 
-  const fetchData = async () => {
+  async function fetchData() {
     setLoading(true);
     setError("");
     try {
@@ -133,12 +134,12 @@ export default function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   const handleLogout = () => {
     localStorage.removeItem("admin_auth");
     router.push("/admin/login");
-  };
+  }
 
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -166,7 +167,7 @@ export default function AdminDashboard() {
     } finally {
       setPasswordLoading(false);
     }
-  };
+  }
 
   const handleEditBooking = (booking: Booking) => {
     setEditingBooking(booking);
@@ -174,7 +175,7 @@ export default function AdminDashboard() {
     setEditPhone(booking.phone);
     setEditDate(getDateKey(booking.date));
     setEditError("");
-  };
+  }
 
   const handleUpdateBooking = async () => {
     if (!editingBooking) return;
@@ -223,7 +224,7 @@ export default function AdminDashboard() {
     } finally {
       setSavingEdit(false);
     }
-  };
+  }
 
   const handleDeleteBooking = async (booking: Booking) => {
     if (typeof window === "undefined") return;
@@ -246,7 +247,7 @@ export default function AdminDashboard() {
       console.error(err);
       showToast("error", "Server error saat menghapus booking");
     }
-  };
+  }
 
   const handleMarkVisited = async (booking: Booking) => {
     if (typeof window === "undefined") return;

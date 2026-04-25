@@ -26,7 +26,7 @@ export default function PengumumanSekolahPage() {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
+  async function fetchData() {
     setLoading(true);
     try {
       const res = await fetch(`${API_URL}/api/bookings`);

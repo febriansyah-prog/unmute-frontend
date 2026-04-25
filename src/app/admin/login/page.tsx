@@ -40,7 +40,7 @@ export default function AdminLoginPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center p-6 relative overflow-hidden">
