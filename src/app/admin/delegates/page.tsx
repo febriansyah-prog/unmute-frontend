@@ -343,9 +343,10 @@ export default function AdminDelegatesPage() {
                 <input
                   type="text"
                   value={nisn}
-                  onChange={(e) => setNisn(e.target.value)}
+                  onChange={(e) => setNisn(e.target.value.replace(/\D/g, ""))}
                   className="w-full bg-gray-50 border-2 border-transparent focus:border-brand-purple focus:bg-white rounded-2xl p-4 outline-none transition-all font-medium"
                   required
+                  placeholder="Hanya angka"
                 />
               </div>
 
