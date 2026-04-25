@@ -127,9 +127,9 @@ export default function PengumumanSekolahPage() {
                 <tbody className="divide-y divide-gray-50 bg-white/50">
                   {bookings.length > 0 ? (
                     bookings.map((b, idx) => (
-                      <tr key={b.id} className="hover:bg-brand-purple/[0.02] transition-colors group">
+                      <tr key={b.id} className="glass-row-hover group/row transition-all duration-300">
                         <td className="px-6 sm:px-8 py-5 text-center text-gray-400 font-bold">{idx + 1}</td>
-                        <td className="px-6 sm:px-8 py-5 font-black text-gray-800 group-hover:text-brand-purple transition-colors">{b.school_name}</td>
+                        <td className="px-6 sm:px-8 py-5 font-black text-gray-800 group-hover/row:text-brand-purple transition-colors">{b.school_name}</td>
                         <td className="px-6 sm:px-8 py-5 font-bold text-gray-600">{b.pic}</td>
                         <td className="px-6 sm:px-8 py-5">
                           <span className="inline-block px-3 py-1.5 rounded-xl bg-brand-purple/5 text-brand-purple text-[10px] sm:text-xs font-black border border-brand-purple/10">

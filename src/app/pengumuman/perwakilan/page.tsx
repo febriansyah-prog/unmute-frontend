@@ -114,10 +114,10 @@ export default function PengumumanPerwakilanPage() {
                 <tbody className="divide-y divide-gray-50 bg-white/50">
                   {delegates.length > 0 ? (
                     delegates.map((d, idx) => (
-                      <tr key={d.id} className="hover:bg-brand-purple/[0.02] transition-colors group">
+                      <tr key={d.id} className="glass-row-hover group/row transition-all duration-300">
                         <td className="px-6 sm:px-8 py-5 text-center text-gray-400 font-bold">{idx + 1}</td>
                         <td className="px-6 sm:px-8 py-5 font-mono text-sm text-gray-500">{d.nisn.substring(0, 4)}••••••</td>
-                        <td className="px-6 sm:px-8 py-5 font-black text-gray-800 group-hover:text-brand-purple transition-colors">{d.name}</td>
+                        <td className="px-6 sm:px-8 py-5 font-black text-gray-800 group-hover/row:text-brand-purple transition-colors">{d.name}</td>
                         <td className="px-6 sm:px-8 py-5 font-bold text-gray-600">{d.school_name}</td>
                         <td className="px-6 sm:px-8 py-5 text-center">
                           <span className="inline-block px-3 py-1.5 rounded-xl bg-brand-lime/10 text-brand-purple-dark text-[10px] sm:text-xs font-black border border-brand-lime/20">

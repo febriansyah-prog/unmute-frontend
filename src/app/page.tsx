@@ -315,8 +315,9 @@ export default function Home() {
         ) : (
           <>
             {/* Booking Form Card */}
-            <div className="glass-card rounded-3xl p-6 sm:p-8 premium-shadow relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-lime/10 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700"></div>
+            <div className="glass-card rounded-[2.5rem] p-6 sm:p-10 premium-shadow relative overflow-hidden group hover:border-brand-purple/30 transition-colors duration-700">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-brand-lime/10 rounded-full blur-[80px] -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700 pointer-events-none -z-10"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-purple/10 rounded-full blur-[80px] -ml-16 -mb-16 transition-transform group-hover:scale-150 duration-700 pointer-events-none -z-10"></div>
               
               <div className="relative z-10 grid lg:grid-cols-5 gap-10">
                 
@@ -362,7 +363,7 @@ export default function Home() {
                           if (error) setError("");
                           if (success) setSuccess("");
                         }}
-                        className="w-full bg-white rounded-2xl border-2 border-gray-100 p-4 outline-none focus:border-brand-purple transition-all appearance-none cursor-pointer hover:border-gray-200"
+                        className="w-full bg-white/60 rounded-2xl border-2 border-gray-100 p-4 outline-none focus:border-brand-purple focus:bg-white transition-all appearance-none cursor-pointer hover:border-brand-purple/30 font-medium"
                         disabled={availableSchools.length === 0}
                       >
                         <option value="">-- Pilih Sekolah --</option>
@@ -386,7 +387,7 @@ export default function Home() {
                           if (error) setError("");
                           if (success) setSuccess("");
                         }}
-                        className="w-full bg-white rounded-2xl border-2 border-gray-100 p-4 outline-none focus:border-brand-purple transition-all"
+                        className="w-full bg-white/60 rounded-2xl border-2 border-gray-100 p-4 outline-none focus:border-brand-purple focus:bg-white transition-all font-medium"
                       />
                     </div>
 
@@ -403,14 +404,14 @@ export default function Home() {
                           if (error) setError("");
                           if (success) setSuccess("");
                         }}
-                        className={`w-full bg-white rounded-2xl border-2 p-4 outline-none transition-all ${phoneError ? "border-red-400" : "border-gray-100 focus:border-brand-purple"}`}
+                        className={`w-full bg-white/60 rounded-2xl border-2 p-4 outline-none focus:bg-white transition-all font-medium ${phoneError ? "border-red-400" : "border-gray-100 focus:border-brand-purple hover:border-brand-purple/30"}`}
                       />
                       {phoneError && <p className="text-xs text-red-500 font-medium px-1">{phoneError}</p>}
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-gray-700 px-1">Tanggal Terpilih</label>
-                      <div className="w-full bg-gray-50/50 rounded-2xl border-2 border-dashed border-gray-200 p-4 text-brand-purple font-bold">
+                      <div className="w-full bg-gray-50/50 backdrop-blur-sm rounded-2xl border-2 border-dashed border-gray-200 p-4 text-brand-purple font-bold">
                         {date ? formatLongDate(date) : "⚠️ Pilih di kalender →"}
                       </div>
                     </div>
@@ -420,7 +421,7 @@ export default function Home() {
                       disabled={!schoolId || !pic || !phone || !date || submitting}
                       className={`w-full rounded-2xl p-4 text-white font-bold text-lg shadow-lg transition-all transform active:scale-95 ${!schoolId || !pic || !phone || !date || submitting
                         ? "bg-gray-300 cursor-not-allowed"
-                        : "bg-brand-purple hover:bg-brand-purple-light premium-shadow"
+                        : "bg-brand-purple hover:bg-brand-purple-light premium-shadow hover:-translate-y-1 hover:shadow-brand-purple/20"
                         }`}
                     >
                       {submitting ? "Memproses..." : "Konfirmasi Booking"}
@@ -437,16 +438,16 @@ export default function Home() {
                     </div>
                     
                     <div className="flex flex-wrap gap-2 text-[10px] sm:text-xs font-bold uppercase">
-                      <div className="flex items-center gap-1.5 px-2 py-1 bg-white rounded-full border border-gray-100 shadow-sm">
+                      <div className="flex items-center gap-1.5 px-2 py-1 bg-white rounded-full border border-gray-100 shadow-sm hover:scale-105 transition-transform">
                         <span className="w-2.5 h-2.5 rounded-full bg-white border-2 border-gray-100"></span> Tersedia
                       </div>
-                      <div className="flex items-center gap-1.5 px-2 py-1 bg-gray-100 rounded-full text-gray-400 border border-gray-200">
+                      <div className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 rounded-full text-gray-400 border border-gray-100 hover:scale-105 transition-transform">
                         <span className="w-2.5 h-2.5 rounded-full bg-gray-300"></span> Terisi
                       </div>
-                      <div className="flex items-center gap-1.5 px-2 py-1 bg-brand-lime/20 rounded-full text-brand-purple border border-brand-lime/30">
+                      <div className="flex items-center gap-1.5 px-2 py-1 bg-brand-lime/20 rounded-full text-brand-purple border border-brand-lime/30 hover:scale-105 transition-transform">
                         <span className="w-2.5 h-2.5 rounded-full bg-brand-lime"></span> Event
                       </div>
-                      <div className="flex items-center gap-1.5 px-2 py-1 bg-red-50 rounded-full text-red-400 border border-red-100">
+                      <div className="flex items-center gap-1.5 px-2 py-1 bg-red-50 rounded-full text-red-400 border border-red-100 hover:scale-105 transition-transform">
                         <span className="w-2.5 h-2.5 rounded-full bg-red-200"></span> Libur
                       </div>
                     </div>

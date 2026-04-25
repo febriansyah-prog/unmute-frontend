@@ -46,14 +46,25 @@ export default function HomePublicPage() {
             Sebuah inisiatif pengabdian masyarakat oleh Universitas Fajar yang mendedikasikan keahlian akademis untuk memberdayakan potensi siswa-siswi di seluruh Sulawesi Selatan.
           </p>
 
-          <div className="flex flex-col items-center gap-6 sm:gap-8 mb-12">
-            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-14">
-              <Image src="/logo-unifa.png" alt="Universitas Fajar" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-105 transition-transform" />
-              <Image src="/logo-sulsel.png" alt="Provinsi Sulawesi Selatan" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-105 transition-transform" />
-              <Image src="/logo-kbb.png" alt="Kelas Bebas Bicara" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-105 transition-transform" />
+          <div className="flex flex-col items-center gap-6 sm:gap-8 mb-12 animate-fade-in relative z-10" style={{ animationDelay: '0.2s' }}>
+            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-14 bg-white/40 p-6 sm:p-8 rounded-[2rem] border border-white/60 shadow-xl backdrop-blur-md hover:bg-white/50 transition-colors">
+              <div className="relative group">
+                <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <Image src="/logo-unifa.png" alt="Universitas Fajar" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-110 hover:-rotate-3 transition-transform duration-300 relative z-10 drop-shadow-md" />
+              </div>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <Image src="/logo-sulsel.png" alt="Provinsi Sulawesi Selatan" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-110 transition-transform duration-300 relative z-10 drop-shadow-md" />
+              </div>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-brand-lime/30 rounded-full blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <Image src="/logo-kbb.png" alt="Kelas Bebas Bicara" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-110 hover:rotate-3 transition-transform duration-300 relative z-10 drop-shadow-md" />
+              </div>
             </div>
-            <div className="flex justify-center mt-4">
-              <Image src="/logo-unmute-large.png" alt="Unmute by Unifers" width={300} height={150} className="h-32 sm:h-40 w-auto object-contain hover:scale-105 transition-transform drop-shadow-md" />
+            
+            <div className="flex justify-center mt-6 relative group animate-float">
+              <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <Image src="/logo-unmute-large.png" alt="Unmute by Unifers" width={300} height={150} className="h-32 sm:h-40 w-auto object-contain hover:scale-105 transition-transform duration-500 relative z-10 drop-shadow-2xl" />
             </div>
           </div>
 
@@ -62,6 +73,41 @@ export default function HomePublicPage() {
               Booking Sekarang
             </Link>
           </div>
+        </div>
+
+        {/* Features / Content Blocks */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mt-16 max-w-6xl mx-auto px-4 z-10 relative">
+          
+          <div className="glass-card p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-purple/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)]">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+              <span className="text-3xl sm:text-4xl">🎙️</span>
+            </div>
+            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Public Speaking</h3>
+            <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+              Meningkatkan kepercayaan diri dan seni berbicara di depan umum bersama mentor profesional.
+            </p>
+          </div>
+
+          <div className="glass-card p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-lime/80 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,253,31,0.15)]">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-lime to-brand-lime-hover text-brand-purple-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+              <span className="text-3xl sm:text-4xl">💻</span>
+            </div>
+            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Teknologi IT</h3>
+            <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+              Membekali siswa dengan pemahaman teknologi terkini sebagai fondasi menghadapi era digital.
+            </p>
+          </div>
+
+          <div className="glass-card p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-purple/50 transition-all duration-300 sm:col-span-2 lg:col-span-1 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)]">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+              <span className="text-3xl sm:text-4xl">🚀</span>
+            </div>
+            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Dosen Berdampak</h3>
+            <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+              Wujud nyata pengabdian sivitas akademika Universitas Fajar untuk masyarakat Sulawesi Selatan.
+            </p>
+          </div>
+
         </div>
 
         {/* Content Details */}

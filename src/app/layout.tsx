@@ -33,8 +33,13 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">
-        <div className="flex-1">
+      <body className="min-h-full flex flex-col font-sans relative overflow-x-hidden">
+        {/* Dynamic Abstract Background Elements */}
+        <div className="fixed top-[-15%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-brand-purple/10 blur-[100px] animate-pulse-slow pointer-events-none -z-10"></div>
+        <div className="fixed bottom-[-10%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-brand-lime/10 blur-[100px] animate-pulse-slow pointer-events-none -z-10" style={{ animationDelay: '2s' }}></div>
+        <div className="fixed top-[40%] left-[60%] w-[30vw] h-[30vw] rounded-full bg-brand-purple-light/5 blur-[80px] animate-float pointer-events-none -z-10"></div>
+        
+        <div className="flex-1 relative z-0">
           {children}
         </div>
         
