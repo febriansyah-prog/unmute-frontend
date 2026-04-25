@@ -6,12 +6,14 @@ import { motion, HTMLMotionProps } from "framer-motion";
 interface SpotlightCardProps extends HTMLMotionProps<"div"> {
   children: ReactNode;
   className?: string;
+  childrenClassName?: string;
   spotlightColor?: string;
 }
 
 export function SpotlightCard({
   children,
   className = "",
+  childrenClassName = "",
   spotlightColor = "rgba(109, 63, 224, 0.15)", // Default to brand-purple-light with low opacity
   ...props
 }: SpotlightCardProps) {
@@ -63,7 +65,9 @@ export function SpotlightCard({
           background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
         }}
       />
-      <div className="relative z-10 w-full h-full">{children}</div>
+      <div className={`relative z-10 w-full h-full ${childrenClassName}`}>
+        {children}
+      </div>
     </motion.div>
   );
 }

@@ -11,9 +11,10 @@ export default function HomePublicPage() {
       {/* Navbar / Header */}
       <nav className="sticky top-0 z-50 glass-card dark:bg-black/50 px-4 py-3 sm:px-6 mb-8 border-b border-white/50 dark:border-gray-800 transition-colors duration-500">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/home" className="flex items-center gap-3 group">
-            <Image src="/logo.png" alt="Unmute by Unifers" width={150} height={50} className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]" priority />
-            <div className="h-6 w-[2px] bg-gray-200 mx-2 hidden sm:block"></div>
+          <Link href="/home" className="flex items-center gap-3 group relative">
+            <div className="absolute inset-0 bg-transparent dark:bg-white/60 blur-md rounded-full z-0 transition-colors duration-500"></div>
+            <Image src="/logo.png" alt="Unmute by Unifers" width={150} height={50} className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform relative z-10" priority />
+            <div className="h-6 w-[2px] bg-gray-200 mx-2 hidden sm:block relative z-10"></div>
             <h1 className="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-purple hidden sm:block">Beranda</h1>
           </Link>
           <div className="flex items-center gap-4 sm:gap-6">
@@ -53,13 +54,6 @@ export default function HomePublicPage() {
           <div className="flex flex-col items-center gap-6 sm:gap-8 mb-12 animate-fade-in relative z-10" style={{ animationDelay: '0.2s' }}>
             <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-14 bg-white/40 p-6 sm:p-8 rounded-[2rem] border border-white/60 shadow-xl backdrop-blur-md hover:bg-white/50 transition-colors">
               <div className="relative group">
-                <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <Image src="/logo-unifa.png" alt="Universitas Fajar" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-110 hover:-rotate-3 transition-transform duration-300 relative z-10 drop-shadow-md" />
-              </div>
-              <div className="relative group">
-                <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <Image src="/logo-sulsel.png" alt="Provinsi Sulawesi Selatan" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-110 transition-transform duration-300 relative z-10 drop-shadow-md" />
-              </div>
                 <div className="absolute inset-0 bg-brand-purple/40 rounded-full blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <Image src="/logo-unifa.png" alt="Universitas Fajar" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-110 hover:-rotate-3 transition-transform duration-300 relative z-10 drop-shadow-md dark:drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" />
               </div>
@@ -74,8 +68,9 @@ export default function HomePublicPage() {
             </div>
             
             <div className="relative inline-block mt-4 mb-6">
-              <div className="absolute inset-0 bg-brand-lime/20 dark:bg-brand-lime/10 blur-[60px] sm:blur-[80px] rounded-full"></div>
-              <Image src="/logo-unmute-large.png" alt="Unmute by Unifers" width={300} height={150} className="h-32 sm:h-40 w-auto object-contain hover:scale-105 transition-transform duration-500 relative z-10 drop-shadow-2xl dark:drop-shadow-[0_0_20px_rgba(255,255,255,0.7)]" />
+              <div className="absolute inset-0 bg-brand-lime/20 dark:bg-brand-lime/10 blur-[60px] sm:blur-[80px] rounded-full z-0"></div>
+              <div className="absolute inset-x-4 inset-y-2 bg-transparent dark:bg-white/70 blur-2xl rounded-full z-0 transition-colors duration-500"></div>
+              <Image src="/logo-unmute-large.png" alt="Unmute by Unifers" width={300} height={150} className="h-32 sm:h-40 w-auto object-contain hover:scale-105 transition-transform duration-500 relative z-10 drop-shadow-2xl" />
             </div>
             
             <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg font-medium max-w-3xl mx-auto text-center mt-4 px-4 transition-colors">
@@ -94,12 +89,13 @@ export default function HomePublicPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mt-16 max-w-6xl mx-auto px-4 z-10 relative">
           
           <SpotlightCard 
+            childrenClassName="flex flex-col items-center text-center"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
             spotlightColor="rgba(79,38,166,0.6)"
-            className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-purple/50 dark:border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
+            className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow group hover:border-brand-purple/50 dark:border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
           >
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light dark:from-brand-purple-dark dark:to-brand-purple text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
               <span className="text-3xl sm:text-4xl">🎙️</span>
@@ -111,12 +107,13 @@ export default function HomePublicPage() {
           </SpotlightCard>
 
           <SpotlightCard 
+            childrenClassName="flex flex-col items-center text-center"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
             spotlightColor="rgba(217,253,31,0.5)"
-            className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-lime/80 dark:border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,253,31,0.15)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
+            className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow group hover:border-brand-lime/80 dark:border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,253,31,0.15)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
           >
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-lime to-brand-lime-hover text-brand-purple-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
               <span className="text-3xl sm:text-4xl">💻</span>
@@ -128,12 +125,13 @@ export default function HomePublicPage() {
           </SpotlightCard>
 
           <SpotlightCard 
+            childrenClassName="flex flex-col items-center text-center"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
             spotlightColor="rgba(79,38,166,0.6)"
-            className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-purple/50 dark:border-gray-800 transition-all duration-300 sm:col-span-2 lg:col-span-1 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
+            className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow sm:col-span-2 lg:col-span-1 group hover:border-brand-purple/50 dark:border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
           >
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light dark:from-brand-purple-dark dark:to-brand-purple text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
               <span className="text-3xl sm:text-4xl">🚀</span>
