@@ -344,9 +344,19 @@ export default function AdminDelegatesPage() {
                   type="text"
                   value={nisn}
                   onChange={(e) => setNisn(e.target.value.replace(/\D/g, ""))}
+                  onKeyDown={(e) => {
+                    // Allow navigation and editing keys
+                    if (["Backspace", "ArrowLeft", "ArrowRight", "Tab", "Delete"].includes(e.key)) return;
+                    // Block non-numeric keys
+                    if (!/[0-9]/.test(e.key) && !e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                    }
+                  }}
                   className="w-full bg-gray-50 border-2 border-transparent focus:border-brand-purple focus:bg-white rounded-2xl p-4 outline-none transition-all font-medium"
                   required
                   placeholder="Hanya angka"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
                 />
               </div>
 
@@ -405,15 +415,22 @@ export default function AdminDelegatesPage() {
               <button onClick={() => setIsListModalOpen(false)} className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 font-bold">✕</button>
             </div>
 
-            <div className="mb-6 flex justify-between items-center bg-brand-purple/5 p-4 rounded-2xl border border-brand-purple/10">
+            <div className="mb-6 flex flex-col sm:flex-row sm:justify-between items-start sm:items-center bg-brand-purple/5 p-4 rounded-2xl border border-brand-purple/10 gap-3">
               <span className="font-bold text-brand-purple-dark">Total: {delegates.length}/10 Siswa</span>
-              <button 
-                onClick={() => openAddModal(selectedSchool)} 
-                disabled={delegates.length >= 10}
-                className="px-4 py-2 bg-brand-purple text-white rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-brand-purple-light transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                + Tambah Siswa
-              </button>
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                {delegates.length >= 10 && (
+                  <span className="text-red-500 text-[10px] sm:text-xs font-bold bg-red-50 px-3 py-2 rounded-xl border border-red-100 uppercase tracking-wide">
+                    Siswa terdaftar sudah 10 orang
+                  </span>
+                )}
+                <button 
+                  onClick={() => openAddModal(selectedSchool)} 
+                  disabled={delegates.length >= 10}
+                  className="px-4 py-2 bg-brand-purple text-white rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-brand-purple-light transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                >
+                  + Tambah Siswa
+                </button>
+              </div>
             </div>
 
             {loadingDelegates ? (
