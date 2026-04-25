@@ -21,6 +21,7 @@ type Booking = {
   school_name: string;
   pic: string;
   phone: string;
+  status?: string;
 };
 
 type Toast = {
@@ -208,6 +209,25 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleUpdateStatus = async (booking: Booking, newStatus: string) => {
+    try {
+      const res = await fetch(`${API_URL}/api/bookings/${booking.id}/status`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      if (res.ok) {
+        showToast("success", "Status berhasil diperbarui");
+        await fetchData();
+      } else {
+        showToast("error", "Gagal memperbarui status");
+      }
+    } catch (err) {
+      console.error(err);
+      showToast("error", "Terjadi kesalahan server");
+    }
+  };
+
   const totalSchools = schools.length;
   const totalBookings = bookings.length;
   const bookedSchoolsCount = new Set(bookings.map((b) => b.school_name)).size;
@@ -252,6 +272,12 @@ export default function AdminDashboard() {
           </div>
 
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => router.push("/admin/delegates")}
+              className="px-4 py-2 bg-brand-lime/10 text-brand-lime-hover rounded-xl text-sm font-black uppercase tracking-wider hover:bg-brand-lime hover:text-brand-purple-dark transition-all"
+            >
+              Perwakilan
+            </button>
             <button
               onClick={() => router.push("/admin/schools")}
               className="px-4 py-2 bg-brand-purple/5 text-brand-purple rounded-xl text-sm font-black uppercase tracking-wider hover:bg-brand-purple hover:text-white transition-all"
@@ -331,6 +357,7 @@ export default function AdminDashboard() {
                       <th className="px-8 py-5">PIC</th>
                       <th className="px-8 py-5">No HP</th>
                       <th className="px-8 py-5">Tanggal</th>
+                      <th className="px-8 py-5 text-center">Status</th>
                       <th className="px-8 py-5 text-center">Opsi</th>
                     </tr>
                   </thead>
@@ -347,10 +374,30 @@ export default function AdminDashboard() {
                               {formatLongDate(b.date)}
                             </span>
                           </td>
+                          <td className="px-8 py-6 text-center">
+                            {b.status === "visited" ? (
+                              <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-50 text-green-600 rounded-full text-[10px] font-black uppercase tracking-wider">
+                                ✅ Dikunjungi
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-1 px-3 py-1 bg-orange-50 text-orange-500 rounded-full text-[10px] font-black uppercase tracking-wider">
+                                ⏳ Menunggu
+                              </span>
+                            )}
+                          </td>
                           <td className="px-8 py-6">
                             <div className="flex justify-center gap-2">
-                              <button onClick={() => handleEditBooking(b)} className="w-10 h-10 rounded-xl bg-brand-lime/20 text-brand-purple-dark hover:bg-brand-lime transition-all flex items-center justify-center">✏️</button>
-                              <button onClick={() => handleDeleteBooking(b)} className="w-10 h-10 rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">🗑️</button>
+                              {b.status !== "visited" && (
+                                <button
+                                  onClick={() => handleUpdateStatus(b, "visited")}
+                                  title="Tandai Telah Dikunjungi"
+                                  className="w-10 h-10 rounded-xl bg-green-50 text-green-600 hover:bg-green-600 hover:text-white transition-all flex items-center justify-center text-lg"
+                                >
+                                  ✔️
+                                </button>
+                              )}
+                              <button onClick={() => handleEditBooking(b)} title="Edit" className="w-10 h-10 rounded-xl bg-brand-lime/20 text-brand-purple-dark hover:bg-brand-lime transition-all flex items-center justify-center">✏️</button>
+                              <button onClick={() => handleDeleteBooking(b)} title="Hapus" className="w-10 h-10 rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">🗑️</button>
                             </div>
                           </td>
                         </tr>
