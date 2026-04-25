@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { SpotlightCard } from "@/components/SpotlightCard";
 
 export default function HomePublicPage() {
   return (
@@ -32,7 +32,6 @@ export default function HomePublicPage() {
                 <Link href="/pengumuman/perwakilan" className="px-5 py-4 text-xs font-black text-gray-600 hover:bg-brand-purple/5 hover:text-brand-purple border-t border-gray-50 uppercase tracking-wider">Daftar Siswa Perwakilan</Link>
               </div>
             </div>
-            <ThemeToggle />
           </div>
         </div>
       </nav>
@@ -87,11 +86,12 @@ export default function HomePublicPage() {
         {/* Features / Content Blocks */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mt-16 max-w-6xl mx-auto px-4 z-10 relative">
           
-          <motion.div 
+          <SpotlightCard 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            spotlightColor="rgba(79,38,166,0.25)"
             className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-purple/50 dark:border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
           >
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light dark:from-brand-purple-dark dark:to-brand-purple text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
@@ -101,13 +101,14 @@ export default function HomePublicPage() {
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
               Meningkatkan kepercayaan diri dan seni berbicara di depan umum secara memukau, dirancang khusus untuk menggali potensi kepemimpinan siswa-siswi di bangku sekolah.
             </p>
-          </motion.div>
+          </SpotlightCard>
 
-          <motion.div 
+          <SpotlightCard 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            spotlightColor="rgba(217,253,31,0.15)"
             className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-lime/80 dark:border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,253,31,0.15)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
           >
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-lime to-brand-lime-hover text-brand-purple-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
@@ -117,13 +118,14 @@ export default function HomePublicPage() {
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
               Membekali siswa dengan pemahaman dasar Kecerdasan Buatan (AI) serta penerapannya yang inovatif dan etis untuk mendukung proses pembelajaran di dunia pendidikan modern.
             </p>
-          </motion.div>
+          </SpotlightCard>
 
-          <motion.div 
+          <SpotlightCard 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
+            spotlightColor="rgba(79,38,166,0.25)"
             className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-purple/50 dark:border-gray-800 transition-all duration-300 sm:col-span-2 lg:col-span-1 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
           >
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light dark:from-brand-purple-dark dark:to-brand-purple text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
@@ -133,35 +135,44 @@ export default function HomePublicPage() {
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
               Membuka wawasan generasi muda terhadap peluang ekonomi kreatif di era digital, melalui strategi produksi konten visual dan naratif yang positif serta berdampak luas.
             </p>
-          </motion.div>
+          </SpotlightCard>
 
         </div>
 
         {/* Content Details */}
         <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
-          <div className="glass-card rounded-[2rem] p-8 sm:p-10 premium-shadow border border-white/50 hover:-translate-y-2 transition-transform">
-            <div className="w-14 h-14 bg-brand-purple/10 rounded-2xl flex items-center justify-center text-3xl mb-6">🏛️</div>
-            <h3 className="text-2xl font-black text-brand-purple-dark uppercase mb-4">Inisiatif & Kolaborasi</h3>
-            <p className="text-gray-500 font-medium leading-relaxed">
-              <strong className="text-brand-purple-dark">Unmute by Unifers</strong> adalah manifestasi nyata dari Tri Dharma Perguruan Tinggi yang diinisiasi oleh <strong className="text-brand-purple-dark">Universitas Fajar (Unifa)</strong>. Menggandeng mitra strategis <strong className="text-brand-purple-dark">Kelas Bebas Berbicara</strong> dan didukung penuh oleh <strong className="text-brand-purple-dark">Dinas Pendidikan Provinsi Sulawesi Selatan</strong>, program ini menghadirkan dedikasi para dosen berdampak untuk terjun langsung memajukan ekosistem pendidikan.
+          <SpotlightCard 
+            spotlightColor="rgba(79,38,166,0.15)"
+            className="glass-card dark:bg-gray-900/50 rounded-[2rem] p-8 sm:p-10 premium-shadow border border-white/50 dark:border-gray-800 hover:-translate-y-2 transition-transform duration-300 group"
+          >
+            <div className="w-14 h-14 bg-brand-purple/10 dark:bg-brand-purple/20 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🏛️</div>
+            <h3 className="text-2xl font-black text-brand-purple-dark dark:text-white uppercase mb-4">Inisiatif & Kolaborasi</h3>
+            <p className="text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
+              <strong className="text-brand-purple-dark dark:text-brand-lime">Unmute by Unifers</strong> adalah manifestasi nyata dari Tri Dharma Perguruan Tinggi yang diinisiasi oleh <strong className="text-brand-purple-dark dark:text-white">Universitas Fajar (Unifa)</strong>. Menggandeng mitra strategis <strong className="text-brand-purple-dark dark:text-white">Kelas Bebas Berbicara</strong> dan didukung penuh oleh <strong className="text-brand-purple-dark dark:text-white">Dinas Pendidikan Provinsi Sulawesi Selatan</strong>, program ini menghadirkan dedikasi para dosen berdampak untuk terjun langsung memajukan ekosistem pendidikan.
             </p>
-          </div>
+          </SpotlightCard>
 
-          <div className="glass-card rounded-[2rem] p-8 sm:p-10 premium-shadow border border-white/50 hover:-translate-y-2 transition-transform">
-            <div className="w-14 h-14 bg-brand-lime/20 rounded-2xl flex items-center justify-center text-3xl mb-6">🌟</div>
-            <h3 className="text-2xl font-black text-brand-purple-dark uppercase mb-4">Nilai & Kontribusi</h3>
-            <p className="text-gray-500 font-medium leading-relaxed">
-              Lebih dari sekadar berbagi ilmu, kegiatan ini dirancang sebagai ruang eskalasi kompetensi. Melalui transfer keterampilan praktis abad ke-21, sivitas akademika <strong className="text-brand-purple-dark">Universitas Fajar</strong> berkomitmen kuat mencetak generasi muda yang adaptif, percaya diri, dan siap bersaing secara global di era digital.
+          <SpotlightCard 
+            spotlightColor="rgba(217,253,31,0.15)"
+            className="glass-card dark:bg-gray-900/50 rounded-[2rem] p-8 sm:p-10 premium-shadow border border-white/50 dark:border-gray-800 hover:-translate-y-2 transition-transform duration-300 group"
+          >
+            <div className="w-14 h-14 bg-brand-lime/20 dark:bg-brand-lime/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🌟</div>
+            <h3 className="text-2xl font-black text-brand-purple-dark dark:text-white uppercase mb-4">Nilai & Kontribusi</h3>
+            <p className="text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
+              Lebih dari sekadar berbagi ilmu, kegiatan ini dirancang sebagai ruang eskalasi kompetensi. Melalui transfer keterampilan praktis abad ke-21, sivitas akademika <strong className="text-brand-purple-dark dark:text-brand-lime">Universitas Fajar</strong> berkomitmen kuat mencetak generasi muda yang adaptif, percaya diri, dan siap bersaing secara global di era digital.
             </p>
-          </div>
+          </SpotlightCard>
 
-          <div className="glass-card rounded-[2rem] p-8 sm:p-10 premium-shadow border border-white/50 hover:-translate-y-2 transition-transform">
-            <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-3xl mb-6">📈</div>
-            <h3 className="text-2xl font-black text-brand-purple-dark uppercase mb-4">Visi Berkelanjutan</h3>
-            <p className="text-gray-500 font-medium leading-relaxed">
+          <SpotlightCard 
+            spotlightColor="rgba(79,38,166,0.15)"
+            className="glass-card dark:bg-gray-900/50 rounded-[2rem] p-8 sm:p-10 premium-shadow border border-white/50 dark:border-gray-800 hover:-translate-y-2 transition-transform duration-300 group"
+          >
+            <div className="w-14 h-14 bg-blue-50 dark:bg-blue-500/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">📈</div>
+            <h3 className="text-2xl font-black text-brand-purple-dark dark:text-white uppercase mb-4">Visi Berkelanjutan</h3>
+            <p className="text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
               Komitmen kami tidak berhenti pada ruang kelas. Kami bertekad menjaring dan membina talenta-talenta unggul melalui program pendampingan intensif. Inisiatif berkelanjutan ini merupakan wujud nyata kontribusi akademisi dalam mencetak calon pemimpin masa depan yang berwawasan luas dan penuh inovasi.
             </p>
-          </div>
+          </SpotlightCard>
         </div>
       </div>
     </main>

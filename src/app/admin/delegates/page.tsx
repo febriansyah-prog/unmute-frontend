@@ -183,6 +183,7 @@ export default function AdminDelegatesPage() {
         setIsAddModalOpen(false);
         if (isListModalOpen) fetchDelegates(selectedSchool.id);
       }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error(err);
       showToast("error", err.message || "Terjadi kesalahan");
@@ -345,6 +346,7 @@ export default function AdminDelegatesPage() {
                               <span>👁️</span> Lihat Siswa
                             </button>
                             <button 
+                              // eslint-disable-next-line @typescript-eslint/no-explicit-any
                               onClick={() => handleCancelVisit(school as any)} 
                               className="px-4 py-2 rounded-xl bg-red-50 text-red-600 font-bold text-xs uppercase tracking-wider hover:bg-red-600 hover:text-white transition-all flex items-center gap-2 ml-4"
                               title="Hapus dari daftar kunjungan"
