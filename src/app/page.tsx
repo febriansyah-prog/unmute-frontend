@@ -271,9 +271,20 @@ export default function Home() {
             <div className="h-6 w-[2px] bg-gray-200 mx-2 hidden sm:block"></div>
             <h1 className="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-purple-dark hidden sm:block">Portal <span className="text-brand-purple">Booking</span></h1>
           </div>
-          <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-gray-500">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            Sistem Booking Aktif
+          <div className="flex items-center gap-4 sm:gap-6">
+            <div className="relative group">
+              <button className="flex items-center gap-1 text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
+                Pengumuman <span className="text-[10px]">▼</span>
+              </button>
+              <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col overflow-hidden z-50">
+                <a href="/pengumuman/sekolah" className="px-5 py-4 text-xs font-black text-gray-600 hover:bg-brand-purple/5 hover:text-brand-purple uppercase tracking-wider">Daftar Partisipan Sekolah</a>
+                <a href="/pengumuman/perwakilan" className="px-5 py-4 text-xs font-black text-gray-600 hover:bg-brand-purple/5 hover:text-brand-purple border-t border-gray-50 uppercase tracking-wider">Daftar Siswa Perwakilan</a>
+              </div>
+            </div>
+            <div className="hidden sm:flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              Sistem Aktif
+            </div>
           </div>
         </div>
       </nav>
