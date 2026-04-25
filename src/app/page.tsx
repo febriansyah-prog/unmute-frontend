@@ -196,11 +196,11 @@ export default function Home() {
     const base = "h-10 w-10 sm:h-11 sm:w-11 rounded-xl flex items-center justify-center text-sm font-semibold transition-all duration-200 border-2 shadow-sm";
 
     if (dateKey === date) return `${base} bg-brand-purple text-white border-brand-purple scale-110 z-10`;
-    if (status === "booked") return `${base} bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed grayscale`;
-    if (status === "bootcamp") return `${base} bg-brand-lime text-brand-purple-dark border-brand-lime cursor-not-allowed opacity-80`;
+    if (status === "booked") return `${base} bg-gray-100 text-gray-400 dark:text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 cursor-not-allowed grayscale`;
+    if (status === "bootcamp") return `${base} bg-brand-lime text-brand-purple-dark dark:text-white border-brand-lime cursor-not-allowed opacity-80`;
     if (status === "holiday" || status === "blocked") return `${base} bg-red-50 text-red-400 border-red-100 cursor-not-allowed`;
 
-    return `${base} bg-white text-brand-purple-dark border-gray-100 hover:border-brand-purple hover:bg-brand-purple/5 hover:scale-105`;
+    return `${base} bg-white text-brand-purple-dark dark:text-white border-gray-100 dark:border-gray-700 hover:border-brand-purple hover:bg-brand-purple/5 hover:scale-105`;
   }
 
   const handleDateClick = (clickedDate: Date) => {
@@ -263,32 +263,32 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen pb-20 overflow-x-hidden">
+    <main className="min-h-screen pb-20 overflow-x-hidden dark:bg-black transition-colors duration-500">
       {/* Navbar / Header */}
-      <nav className="sticky top-0 z-50 glass-card px-4 py-3 sm:px-6 mb-8 border-b border-white/50">
+      <nav className="sticky top-0 z-50 glass-card dark:bg-black/50 px-4 py-3 sm:px-6 mb-8 border-b border-white/50 dark:border-gray-800 transition-colors duration-500">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 relative">
             <Image src="/logo.png" alt="Unmute by Unifers" width={150} height={50} className="h-10 sm:h-12 w-auto object-contain" priority />
             <div className="h-6 w-[2px] bg-gray-200 mx-2 hidden sm:block"></div>
-            <h1 className="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-purple-dark hidden sm:block">Portal <span className="text-brand-purple">Booking</span></h1>
+            <h1 className="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-purple-dark dark:text-white hidden sm:block">Portal <span className="text-brand-purple dark:text-brand-lime ">Booking</span></h1>
           </div>
           <div className="flex items-center gap-4 sm:gap-6">
-            <Link href="/home" className="text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
+            <Link href="/home" className="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400 dark:text-gray-500 hover:text-brand-purple dark:text-brand-lime dark:hover:text-brand-lime transition-colors uppercase tracking-wider">
               Home
             </Link>
-            <Link href="/" className="text-xs sm:text-sm font-bold text-brand-purple hover:text-brand-purple-light transition-colors uppercase tracking-wider">
+            <Link href="/" className="text-xs sm:text-sm font-bold text-brand-purple dark:text-brand-lime hover:text-brand-purple-light transition-colors uppercase tracking-wider">
               Booking
             </Link>
             <div className="relative group" tabIndex={0}>
-              <button className="flex items-center gap-1 text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple focus:text-brand-purple transition-colors uppercase tracking-wider">
+              <button className="flex items-center gap-1 text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400 dark:text-gray-500 hover:text-brand-purple dark:text-brand-lime dark:hover:text-brand-lime focus:text-brand-purple dark:text-brand-lime transition-colors uppercase tracking-wider">
                 Pengumuman <span className="text-[10px]">▼</span>
               </button>
-              <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all flex flex-col overflow-hidden z-50">
-                <a href="/pengumuman/sekolah" className="px-5 py-4 text-xs font-black text-gray-600 hover:bg-brand-purple/5 hover:text-brand-purple uppercase tracking-wider">Daftar Partisipan Sekolah</a>
-                <a href="/pengumuman/perwakilan" className="px-5 py-4 text-xs font-black text-gray-600 hover:bg-brand-purple/5 hover:text-brand-purple border-t border-gray-50 uppercase tracking-wider">Daftar Siswa Perwakilan</a>
+              <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all flex flex-col overflow-hidden z-50">
+                <a href="/pengumuman/sekolah" className="px-5 py-4 text-xs font-black text-gray-600 dark:text-gray-400 dark:text-gray-500 dark:text-gray-300 hover:bg-brand-purple/5 dark:hover:bg-gray-800 hover:text-brand-purple dark:text-brand-lime uppercase tracking-wider">Daftar Partisipan Sekolah</a>
+                <a href="/pengumuman/perwakilan" className="px-5 py-4 text-xs font-black text-gray-600 dark:text-gray-400 dark:text-gray-500 dark:text-gray-300 hover:bg-brand-purple/5 dark:hover:bg-gray-800 hover:text-brand-purple dark:text-brand-lime border-t border-gray-50 dark:border-gray-800 uppercase tracking-wider">Daftar Siswa Perwakilan</a>
               </div>
             </div>
-            <div className="hidden sm:flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+            <div className="hidden sm:flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 dark:text-gray-400 ">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
               Sistem Aktif
             </div>
@@ -300,10 +300,10 @@ export default function Home() {
         
         {/* Hero Section */}
         <div className="text-center space-y-4 max-w-2xl mx-auto py-6">
-          <h1 className="text-4xl sm:text-5xl font-black text-brand-purple-dark tracking-tight">
-            Booking <span className="text-brand-purple underline decoration-brand-lime decoration-8">Kunjungan</span> Roadshow
+          <h1 className="text-4xl sm:text-5xl font-black text-brand-purple-dark dark:text-white tracking-tight">
+            Booking <span className="text-brand-purple dark:text-brand-lime underline decoration-brand-lime decoration-8">Kunjungan</span> Roadshow
           </h1>
-          <p className="text-gray-600 text-base sm:text-lg">
+          <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500 text-base sm:text-lg">
             Amankan jadwal sekolahmu untuk ikut keseruan roadshow Unmute. Pilih sekolah, isi data, dan tentukan tanggalnya.
           </p>
         </div>
@@ -315,7 +315,7 @@ export default function Home() {
         ) : (
           <>
             {/* Booking Form Card */}
-            <div className="glass-card rounded-[2.5rem] p-6 sm:p-10 premium-shadow relative overflow-hidden group hover:border-brand-purple/30 transition-colors duration-700">
+            <div className="glass-card dark:bg-gray-900/50 rounded-[2.5rem] p-6 sm:p-10 premium-shadow relative overflow-hidden group hover:border-brand-purple/30 transition-colors duration-700">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-lime/10 rounded-full blur-[80px] -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700 pointer-events-none -z-10"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-purple/10 rounded-full blur-[80px] -ml-16 -mb-16 transition-transform group-hover:scale-150 duration-700 pointer-events-none -z-10"></div>
               
@@ -324,8 +324,8 @@ export default function Home() {
                 {/* Left Side: Form */}
                 <div className="lg:col-span-2 space-y-6">
                   <div>
-                    <h2 className="text-2xl font-bold text-brand-purple-dark mb-1">Data Booking</h2>
-                    <p className="text-sm text-gray-500">Lengkapi formulir di bawah ini.</p>
+                    <h2 className="text-2xl font-bold text-brand-purple-dark dark:text-white mb-1">Data Booking</h2>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 ">Lengkapi formulir di bawah ini.</p>
                   </div>
 
                   {success && (
@@ -344,8 +344,8 @@ export default function Home() {
 
                   {successSummary && (
                     <div className="p-5 rounded-2xl bg-brand-purple/5 border border-brand-purple/10 space-y-2 animate-fade-in">
-                      <h3 className="font-bold text-brand-purple">Ringkasan Terakhir:</h3>
-                      <div className="text-sm text-gray-600 space-y-1">
+                      <h3 className="font-bold text-brand-purple dark:text-brand-lime ">Ringkasan Terakhir:</h3>
+                      <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500 space-y-1">
                         <p>🏫 <span className="font-medium">{successSummary.schoolName}</span></p>
                         <p>👤 <span className="font-medium">{successSummary.pic}</span></p>
                         <p>📅 <span className="font-medium">{formatLongDate(successSummary.date)}</span></p>
@@ -355,7 +355,7 @@ export default function Home() {
 
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="space-y-2">
-                      <label className="text-sm font-bold text-gray-700 px-1">Pilih Sekolah</label>
+                      <label className="text-sm font-bold text-gray-700 dark:text-gray-300 px-1">Pilih Sekolah</label>
                       <select
                         value={schoolId}
                         onChange={(e) => {
@@ -363,10 +363,10 @@ export default function Home() {
                           if (error) setError("");
                           if (success) setSuccess("");
                         }}
-                        className="w-full bg-white/60 rounded-2xl border-2 border-gray-100 p-4 outline-none focus:border-brand-purple focus:bg-white transition-all appearance-none cursor-pointer hover:border-brand-purple/30 font-medium"
+                        className="w-full bg-white/60 dark:bg-gray-800/50 dark:bg-gray-800/50 dark:text-white rounded-2xl border-2 border-gray-100 dark:border-gray-700 p-4 outline-none focus:border-brand-purple focus:bg-white dark:focus:bg-gray-800 transition-all appearance-none cursor-pointer hover:border-brand-purple/30 font-medium"
                         disabled={availableSchools.length === 0}
                       >
-                        <option value="">-- Pilih Sekolah --</option>
+                        <option value="" className="dark:bg-gray-900 ">-- Pilih Sekolah --</option>
                         {availableSchools.map((s) => (
                           <option key={s.id} value={s.id}>{s.name}</option>
                         ))}
@@ -377,7 +377,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold text-gray-700 px-1">Nama PIC</label>
+                      <label className="text-sm font-bold text-gray-700 dark:text-gray-300 px-1">Nama PIC</label>
                       <input
                         type="text"
                         placeholder="Siapa yang bisa dihubungi?"
@@ -387,12 +387,12 @@ export default function Home() {
                           if (error) setError("");
                           if (success) setSuccess("");
                         }}
-                        className="w-full bg-white/60 rounded-2xl border-2 border-gray-100 p-4 outline-none focus:border-brand-purple focus:bg-white transition-all font-medium"
+                        className="w-full bg-white/60 dark:bg-gray-800/50 dark:bg-gray-800/50 dark:text-white rounded-2xl border-2 border-gray-100 dark:border-gray-700 p-4 outline-none focus:border-brand-purple focus:bg-white dark:focus:bg-gray-800 transition-all font-medium"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold text-gray-700 px-1">Nomor WhatsApp</label>
+                      <label className="text-sm font-bold text-gray-700 dark:text-gray-300 px-1">Nomor WhatsApp</label>
                       <input
                         type="text"
                         placeholder="Contoh: 08123456789"
@@ -404,14 +404,14 @@ export default function Home() {
                           if (error) setError("");
                           if (success) setSuccess("");
                         }}
-                        className={`w-full bg-white/60 rounded-2xl border-2 p-4 outline-none focus:bg-white transition-all font-medium ${phoneError ? "border-red-400" : "border-gray-100 focus:border-brand-purple hover:border-brand-purple/30"}`}
+                        className={`w-full bg-white/60 dark:bg-gray-800/50 dark:bg-gray-800/50 dark:text-white rounded-2xl border-2 p-4 outline-none focus:bg-white dark:focus:bg-gray-800 transition-all font-medium ${phoneError ? "border-red-400" : "border-gray-100 dark:border-gray-700 focus:border-brand-purple hover:border-brand-purple/30"}`}
                       />
                       {phoneError && <p className="text-xs text-red-500 font-medium px-1">{phoneError}</p>}
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold text-gray-700 px-1">Tanggal Terpilih</label>
-                      <div className="w-full bg-gray-50/50 backdrop-blur-sm rounded-2xl border-2 border-dashed border-gray-200 p-4 text-brand-purple font-bold">
+                      <label className="text-sm font-bold text-gray-700 dark:text-gray-300 px-1">Tanggal Terpilih</label>
+                      <div className="w-full bg-gray-50/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-700 p-4 text-brand-purple dark:text-brand-lime font-bold">
                         {date ? formatLongDate(date) : "⚠️ Pilih di kalender →"}
                       </div>
                     </div>
@@ -420,7 +420,7 @@ export default function Home() {
                       type="submit"
                       disabled={!schoolId || !pic || !phone || !date || submitting}
                       className={`w-full rounded-2xl p-4 text-white font-bold text-lg shadow-lg transition-all transform active:scale-95 ${!schoolId || !pic || !phone || !date || submitting
-                        ? "bg-gray-300 cursor-not-allowed"
+                        ? "bg-gray-300 dark:bg-gray-600 cursor-not-allowed"
                         : "bg-brand-purple hover:bg-brand-purple-light premium-shadow hover:-translate-y-1 hover:shadow-brand-purple/20"
                         }`}
                     >
@@ -433,18 +433,18 @@ export default function Home() {
                 <div className="lg:col-span-3 space-y-8">
                   <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                     <div>
-                      <h2 className="text-2xl font-bold text-brand-purple-dark mb-1">Kalender Jadwal</h2>
-                      <p className="text-sm text-gray-500">Pilih slot yang masih tersedia (hijau).</p>
+                      <h2 className="text-2xl font-bold text-brand-purple-dark dark:text-white mb-1">Kalender Jadwal</h2>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 ">Pilih slot yang masih tersedia (hijau).</p>
                     </div>
                     
                     <div className="flex flex-wrap gap-2 text-[10px] sm:text-xs font-bold uppercase">
-                      <div className="flex items-center gap-1.5 px-2 py-1 bg-white rounded-full border border-gray-100 shadow-sm hover:scale-105 transition-transform">
-                        <span className="w-2.5 h-2.5 rounded-full bg-white border-2 border-gray-100"></span> Tersedia
+                      <div className="flex items-center gap-1.5 px-2 py-1 bg-white rounded-full border border-gray-100 dark:border-gray-700 shadow-sm hover:scale-105 transition-transform">
+                        <span className="w-2.5 h-2.5 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-100 dark:border-gray-700 "></span> Tersedia
                       </div>
-                      <div className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 rounded-full text-gray-400 border border-gray-100 hover:scale-105 transition-transform">
-                        <span className="w-2.5 h-2.5 rounded-full bg-gray-300"></span> Terisi
+                      <div className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 dark:bg-gray-800 rounded-full text-gray-400 dark:text-gray-500 dark:text-gray-400 border border-gray-100 dark:border-gray-700 hover:scale-105 transition-transform">
+                        <span className="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600 "></span> Terisi
                       </div>
-                      <div className="flex items-center gap-1.5 px-2 py-1 bg-brand-lime/20 rounded-full text-brand-purple border border-brand-lime/30 hover:scale-105 transition-transform">
+                      <div className="flex items-center gap-1.5 px-2 py-1 bg-brand-lime/20 rounded-full text-brand-purple dark:text-brand-lime border border-brand-lime/30 hover:scale-105 transition-transform">
                         <span className="w-2.5 h-2.5 rounded-full bg-brand-lime"></span> Event
                       </div>
                       <div className="flex items-center gap-1.5 px-2 py-1 bg-red-50 rounded-full text-red-400 border border-red-100 hover:scale-105 transition-transform">
@@ -458,11 +458,11 @@ export default function Home() {
                       const weeks = getMonthMatrix(item.year, item.month);
                       return (
                         <div key={`${item.year}-${item.month}`} className="space-y-4">
-                          <h3 className="text-center font-black text-brand-purple uppercase tracking-widest">{item.label}</h3>
-                          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-50">
+                          <h3 className="text-center font-black text-brand-purple dark:text-brand-lime uppercase tracking-widest">{item.label}</h3>
+                          <div className="bg-white dark:bg-gray-900 rounded-2xl p-4 shadow-sm border border-gray-50">
                             <div className="grid grid-cols-7 mb-2">
                               {WEEKDAYS.map((day) => (
-                                <div key={day} className="text-[10px] text-center font-black text-gray-400 uppercase">{day}</div>
+                                <div key={day} className="text-[10px] text-center font-black text-gray-400 dark:text-gray-500 dark:text-gray-400 uppercase">{day}</div>
                               ))}
                             </div>
                             <div className="space-y-2">
@@ -492,17 +492,17 @@ export default function Home() {
                   
                   {/* Stats Cards */}
                   <div className="grid grid-cols-3 gap-4 pt-4">
-                    <div className="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm text-center">
-                      <p className="text-[10px] font-black text-gray-400 uppercase mb-1">Total Sekolah</p>
-                      <p className="text-xl font-black text-brand-purple">{schools.length}</p>
+                    <div className="bg-white dark:bg-gray-900 rounded-2xl p-4 border border-gray-100 dark:border-gray-700 shadow-sm text-center">
+                      <p className="text-[10px] font-black text-gray-400 dark:text-gray-500 dark:text-gray-400 uppercase mb-1">Total Sekolah</p>
+                      <p className="text-xl font-black text-brand-purple dark:text-brand-lime ">{schools.length}</p>
                     </div>
                     <div className="bg-brand-purple/5 rounded-2xl p-4 border border-brand-purple/10 shadow-sm text-center">
                       <p className="text-[10px] font-black text-brand-purple-light uppercase mb-1">Sudah Booking</p>
-                      <p className="text-xl font-black text-brand-purple">{bookedSchoolNames.size}</p>
+                      <p className="text-xl font-black text-brand-purple dark:text-brand-lime ">{bookedSchoolNames.size}</p>
                     </div>
                     <div className="bg-brand-lime/10 rounded-2xl p-4 border border-brand-lime/20 shadow-sm text-center">
-                      <p className="text-[10px] font-black text-brand-purple-dark/60 uppercase mb-1">Tersisa</p>
-                      <p className="text-xl font-black text-brand-purple-dark">{availableSchools.length}</p>
+                      <p className="text-[10px] font-black text-brand-purple-dark dark:text-white /60 uppercase mb-1">Tersisa</p>
+                      <p className="text-xl font-black text-brand-purple-dark dark:text-white ">{availableSchools.length}</p>
                     </div>
                   </div>
                 </div>
@@ -512,24 +512,24 @@ export default function Home() {
             {/* Bookings List Section */}
             <div className="space-y-6">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <h2 className="text-3xl font-black text-brand-purple-dark uppercase tracking-tight">Daftar <span className="text-brand-purple">Antrean</span></h2>
+                <h2 className="text-3xl font-black text-brand-purple-dark dark:text-white uppercase tracking-tight">Daftar <span className="text-brand-purple dark:text-brand-lime ">Antrean</span></h2>
                 <div className="relative w-full md:max-w-md">
                   <input
                     type="text"
                     placeholder="Cari sekolah, PIC, atau tanggal..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full bg-white rounded-2xl border-2 border-gray-100 p-4 pl-12 outline-none focus:border-brand-purple transition-all premium-shadow"
+                    className="w-full bg-white dark:bg-gray-900 rounded-2xl border-2 border-gray-100 dark:border-gray-700 p-4 pl-12 outline-none focus:border-brand-purple transition-all premium-shadow"
                   />
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 dark:text-gray-400 ">🔍</span>
                 </div>
               </div>
 
               {/* Desktop Table */}
-              <div className="hidden md:block overflow-hidden rounded-3xl border border-gray-100 bg-white premium-shadow">
+              <div className="hidden md:block overflow-hidden rounded-3xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900/50 premium-shadow">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-brand-purple text-white">
+                    <tr className="bg-brand-purple dark:bg-brand-purple/20 text-white dark:text-brand-lime ">
                       <th className="px-6 py-5 text-sm font-black uppercase tracking-wider">No</th>
                       <th className="px-6 py-5 text-sm font-black uppercase tracking-wider">Nama Sekolah</th>
                       <th className="px-6 py-5 text-sm font-black uppercase tracking-wider">PIC</th>
@@ -537,18 +537,18 @@ export default function Home() {
                       <th className="px-6 py-5 text-sm font-black uppercase tracking-wider text-center">Tanggal Booking</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-50">
+                  <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
                     {filteredBookings.length > 0 ? (
                       filteredBookings.map((b, index) => (
-                        <tr key={b.id} className="hover:bg-brand-purple/[0.02] transition-colors group">
-                          <td className="px-6 py-5 text-gray-400 font-medium">{index + 1}</td>
+                        <tr key={b.id} className="glass-row-hover dark:hover:bg-gray-800 transition-colors group">
+                          <td className="px-6 py-5 text-gray-400 dark:text-gray-500 dark:text-gray-400 font-medium">{index + 1}</td>
                           <td className="px-6 py-5">
-                            <span className="font-bold text-gray-800 group-hover:text-brand-purple transition-colors">{b.school_name}</span>
+                            <span className="font-bold text-gray-800 dark:text-gray-200 group-hover:text-brand-purple dark:text-brand-lime transition-colors">{b.school_name}</span>
                           </td>
-                          <td className="px-6 py-5 text-gray-600 font-medium">{b.pic}</td>
-                          <td className="px-6 py-5 text-center text-gray-600 font-mono text-sm">{b.phone}</td>
+                          <td className="px-6 py-5 text-gray-600 dark:text-gray-400 dark:text-gray-500 font-medium">{b.pic}</td>
+                          <td className="px-6 py-5 text-center text-gray-600 dark:text-gray-400 dark:text-gray-500 font-mono text-sm">{b.phone}</td>
                           <td className="px-6 py-5 text-center">
-                            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-purple/5 text-brand-purple text-xs font-bold border border-brand-purple/10">
+                            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-purple/5 text-brand-purple dark:text-brand-lime text-xs font-bold border border-brand-purple/10">
                               {formatLongDate(b.date)}
                             </span>
                           </td>
@@ -556,7 +556,7 @@ export default function Home() {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan={5} className="px-6 py-20 text-center text-gray-400 italic">
+                        <td colSpan={5} className="px-6 py-20 text-center text-gray-400 dark:text-gray-500 dark:text-gray-400 italic">
                           Tidak ada data booking yang ditemukan.
                         </td>
                       </tr>
@@ -569,25 +569,25 @@ export default function Home() {
               <div className="md:hidden space-y-4">
                 {filteredBookings.length > 0 ? (
                   filteredBookings.map((b, index) => (
-                    <div key={b.id} className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm space-y-3">
+                    <div key={b.id} className="bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm space-y-3">
                       <div className="flex justify-between items-start">
-                        <span className="text-[10px] font-black bg-gray-100 text-gray-400 px-2 py-1 rounded-md uppercase">#{index + 1}</span>
-                        <span className="px-3 py-1 rounded-full bg-brand-purple/5 text-brand-purple text-[10px] font-black border border-brand-purple/10">
+                        <span className="text-[10px] font-black bg-gray-100 text-gray-400 dark:text-gray-500 dark:text-gray-400 px-2 py-1 rounded-md uppercase">#{index + 1}</span>
+                        <span className="px-3 py-1 rounded-full bg-brand-purple/5 text-brand-purple dark:text-brand-lime text-[10px] font-black border border-brand-purple/10">
                           {formatLongDate(b.date)}
                         </span>
                       </div>
                       <div>
-                        <p className="text-lg font-black text-gray-800 leading-tight">{b.school_name}</p>
-                        <p className="text-sm text-gray-500 font-medium">PIC: {b.pic}</p>
+                        <p className="text-lg font-black text-gray-800 dark:text-gray-200 leading-tight">{b.school_name}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 font-medium">PIC: {b.pic}</p>
                       </div>
-                      <div className="pt-2 border-t border-gray-50 flex items-center justify-between">
-                        <span className="text-xs text-gray-400 font-mono">{b.phone}</span>
-                        <div className="w-8 h-8 bg-brand-lime rounded-full flex items-center justify-center text-brand-purple text-xs shadow-sm">📞</div>
+                      <div className="pt-2 border-t border-gray-50 dark:border-gray-800 flex items-center justify-between">
+                        <span className="text-xs text-gray-400 dark:text-gray-500 dark:text-gray-400 font-mono">{b.phone}</span>
+                        <div className="w-8 h-8 bg-brand-lime rounded-full flex items-center justify-center text-brand-purple dark:text-brand-lime text-xs shadow-sm">📞</div>
                       </div>
                     </div>
                   ))
                 ) : (
-                  <div className="bg-white rounded-2xl p-10 text-center text-gray-400 italic border border-gray-100 shadow-sm">
+                  <div className="bg-white dark:bg-gray-900 rounded-2xl p-10 text-center text-gray-400 dark:text-gray-500 dark:text-gray-400 italic border border-gray-100 dark:border-gray-700 shadow-sm">
                     Tidak ada data booking.
                   </div>
                 )}
@@ -599,7 +599,7 @@ export default function Home() {
 
       {/* Footer Decoration */}
       <div className="mt-20 py-10 text-center opacity-30 grayscale pointer-events-none">
-        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-purple">Created with ❤️ for Unmute Roadshow 2026</p>
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-purple dark:text-brand-lime ">Created with ❤️ for Unmute Roadshow 2026</p>
       </div>
     </main>
   );
