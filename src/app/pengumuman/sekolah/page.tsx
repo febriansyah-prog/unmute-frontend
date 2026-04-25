@@ -64,7 +64,7 @@ export default function PengumumanSekolahPage() {
           <Link href="/" className="flex items-center gap-3 group">
             <Image src="/logo.png" alt="Unmute by Unifers" width={150} height={50} className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform" priority />
             <div className="h-6 w-[2px] bg-gray-200 mx-2 hidden sm:block"></div>
-            <h1 className="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-purple-dark hidden sm:block">Portal <span className="text-brand-purple">Booking</span></h1>
+            <h1 className="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-purple hidden sm:block">Pengumuman</h1>
           </Link>
           <div className="flex items-center gap-4 sm:gap-6">
             <div className="relative group">
