@@ -201,7 +201,7 @@ export default function AdminSchoolsPage() {
   if (!authorized) return null;
 
   return (
-    <div className="min-h-screen pb-20">
+    <div className="min-h-screen pb-20 dark:bg-black transition-colors duration-500">
       {/* Toast Notification */}
       {toast && (
         <div className="fixed right-5 top-5 z-[9999] animate-fade-in">
@@ -218,7 +218,7 @@ export default function AdminSchoolsPage() {
           <div className="flex items-center gap-4">
             <Image src="/logo.png" alt="Unmute by Unifers" width={120} height={40} className="h-8 sm:h-10 w-auto object-contain" priority />
             <div className="h-6 w-[2px] bg-gray-200 mx-2 hidden sm:block"></div>
-            <h1 className="text-xl font-black uppercase tracking-tight text-brand-purple-dark hidden sm:block">Panel <span className="text-brand-purple">Admin</span></h1>
+            <h1 className="text-xl font-black uppercase tracking-tight text-brand-purple-dark dark:text-white hidden sm:block">Panel <span className="text-brand-purple">Admin</span></h1>
             
             <button
               onClick={() => router.push("/admin")}
@@ -228,7 +228,7 @@ export default function AdminSchoolsPage() {
             </button>
             <button
               onClick={() => router.push("/admin/delegates")}
-              className="px-4 py-2 bg-brand-lime/20 text-brand-purple-dark rounded-xl text-sm font-black uppercase tracking-wider hover:bg-brand-lime hover:text-brand-purple-dark transition-all ml-2"
+              className="px-4 py-2 bg-brand-lime/20 text-brand-purple-dark dark:text-white rounded-xl text-sm font-black uppercase tracking-wider hover:bg-brand-lime hover:text-brand-purple-dark dark:text-white transition-all ml-2"
             >
               Perwakilan
             </button>
@@ -246,15 +246,15 @@ export default function AdminSchoolsPage() {
       <main className="max-w-7xl mx-auto px-6 animate-fade-in space-y-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <h2 className="text-4xl font-black text-brand-purple-dark uppercase tracking-tight">Kelola <span className="text-brand-purple">Sekolah</span></h2>
-            <p className="text-gray-500 font-medium">Tambah atau perbarui database sekolah peserta roadshow.</p>
+            <h2 className="text-4xl font-black text-brand-purple-dark dark:text-white uppercase tracking-tight">Kelola <span className="text-brand-purple">Sekolah</span></h2>
+            <p className="text-gray-500 dark:text-gray-400 font-medium">Tambah atau perbarui database sekolah peserta roadshow.</p>
           </div>
         </div>
 
         {loading ? (
           <div className="flex flex-col items-center justify-center py-32 space-y-4">
             <div className="w-12 h-12 border-4 border-brand-purple border-t-brand-lime rounded-full animate-spin"></div>
-            <p className="font-black text-gray-400 uppercase tracking-widest text-xs">Memuat Data...</p>
+            <p className="font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest text-xs">Memuat Data...</p>
           </div>
         ) : error ? (
           <div className="glass-card border-red-100 bg-red-50/50 rounded-3xl p-10 text-center space-y-4 max-w-lg mx-auto">
@@ -264,18 +264,18 @@ export default function AdminSchoolsPage() {
         ) : (
           <>
             {/* Add School Form */}
-            <div className="glass-card rounded-[2.5rem] p-8 sm:p-10 premium-shadow border-white/50 relative overflow-hidden group">
+            <div className="glass-card dark:bg-gray-900/50 rounded-[2.5rem] p-8 sm:p-10 premium-shadow border-white/50 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-purple/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
               
               <div className="relative z-10 space-y-6">
-                <h3 className="text-xl font-black text-brand-purple-dark uppercase">Tambah Sekolah Baru</h3>
+                <h3 className="text-xl font-black text-brand-purple-dark dark:text-white uppercase">Tambah Sekolah Baru</h3>
                 <form onSubmit={handleAddSchool} className="flex flex-col md:flex-row gap-4">
                   <input
                     type="text"
                     placeholder="Contoh: SMA Negeri 1 Makassar"
                     value={newSchoolName}
                     onChange={(e) => setNewSchoolName(e.target.value)}
-                    className="flex-1 bg-white border-2 border-gray-100 focus:border-brand-purple rounded-2xl p-4 outline-none transition-all font-medium"
+                    className="flex-1 bg-white border-2 border-gray-100 dark:border-gray-800 focus:border-brand-purple rounded-2xl p-4 outline-none transition-all font-medium"
                   />
                   <button
                     type="submit"
@@ -289,9 +289,9 @@ export default function AdminSchoolsPage() {
             </div>
 
             {/* Schools List Table */}
-            <div className="glass-card rounded-[2.5rem] overflow-hidden premium-shadow">
-              <div className="p-8 sm:p-10 flex flex-col md:flex-row justify-between gap-6 border-b border-gray-100">
-                <h3 className="text-2xl font-black text-brand-purple-dark uppercase">Daftar <span className="text-brand-purple">Sekolah</span></h3>
+            <div className="glass-card dark:bg-gray-900/50 rounded-[2.5rem] overflow-hidden premium-shadow">
+              <div className="p-8 sm:p-10 flex flex-col md:flex-row justify-between gap-6 border-b border-gray-100 dark:border-gray-800">
+                <h3 className="text-2xl font-black text-brand-purple-dark dark:text-white uppercase">Daftar <span className="text-brand-purple">Sekolah</span></h3>
                 
                 <div className="relative">
                   <input
@@ -308,29 +308,29 @@ export default function AdminSchoolsPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-left">
                   <thead>
-                    <tr className="bg-brand-purple/5 text-brand-purple text-[10px] font-black uppercase tracking-widest">
+                    <tr className="bg-brand-purple/5 dark:bg-brand-purple/20 text-brand-purple dark:text-brand-lime text-[10px] font-black uppercase tracking-widest">
                       <th className="px-10 py-5 text-center">No</th>
                       <th className="px-10 py-5">Nama Sekolah</th>
                       <th className="px-10 py-5 text-center">Status Booking</th>
                       <th className="px-10 py-5 text-center">Aksi</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-50">
+                  <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
                     {filteredSchools.length > 0 ? (
                       filteredSchools.map((school, index) => {
                         const hasBooking = bookedSchoolNames.has(school.name);
                         return (
-                          <tr key={school.id} className="hover:bg-brand-purple/[0.01] transition-colors group">
-                            <td className="px-10 py-6 text-gray-300 font-bold text-center">{index + 1}</td>
-                            <td className="px-10 py-6 font-black text-gray-800 group-hover:text-brand-purple transition-colors">{school.name}</td>
+                          <tr key={school.id} className="glass-row-hover dark:hover:bg-gray-800 transition-colors group">
+                            <td className="px-10 py-6 text-gray-300 dark:text-gray-600 font-bold text-center">{index + 1}</td>
+                            <td className="px-10 py-6 font-black text-gray-800 dark:text-gray-200 group-hover:text-brand-purple transition-colors">{school.name}</td>
                             <td className="px-10 py-6 text-center">
-                              <span className={`inline-block px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider border ${hasBooking ? "bg-green-50 text-green-600 border-green-100" : "bg-gray-50 text-gray-400 border-gray-100"}`}>
+                              <span className={`inline-block px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider border ${hasBooking ? "bg-green-50 text-green-600 border-green-100" : "bg-gray-50 text-gray-400 dark:text-gray-500 border-gray-100 dark:border-gray-800"}`}>
                                 {hasBooking ? "✓ Sudah Booking" : "○ Belum Booking"}
                               </span>
                             </td>
                             <td className="px-10 py-6">
                               <div className="flex justify-center gap-2">
-                                <button onClick={() => openEditModal(school)} className="w-10 h-10 rounded-xl bg-brand-lime/20 text-brand-purple-dark hover:bg-brand-lime transition-all flex items-center justify-center">✏️</button>
+                                <button onClick={() => openEditModal(school)} className="w-10 h-10 rounded-xl bg-brand-lime/20 text-brand-purple-dark dark:text-white hover:bg-brand-lime transition-all flex items-center justify-center">✏️</button>
                                 <button 
                                   onClick={() => handleDeleteSchool(school)} 
                                   disabled={hasBooking}
@@ -344,7 +344,7 @@ export default function AdminSchoolsPage() {
                         );
                       })
                     ) : (
-                      <tr><td colSpan={4} className="px-10 py-20 text-center text-gray-400 italic">Data sekolah tidak ditemukan.</td></tr>
+                      <tr><td colSpan={4} className="px-10 py-20 text-center text-gray-400 dark:text-gray-500 italic">Data sekolah tidak ditemukan.</td></tr>
                     )}
                   </tbody>
                 </table>
@@ -357,18 +357,18 @@ export default function AdminSchoolsPage() {
       {/* Edit Modal */}
       {editingSchool && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-purple-dark/40 backdrop-blur-sm p-6 animate-fade-in">
-          <div className="w-full max-w-md glass-card rounded-[2rem] p-8 sm:p-10 premium-shadow border-white/50">
-            <h2 className="text-2xl font-black text-brand-purple-dark mb-1">Edit Sekolah</h2>
+          <div className="w-full max-w-md glass-card dark:bg-gray-900/50 rounded-[2rem] p-8 sm:p-10 premium-shadow border-white/50">
+            <h2 className="text-2xl font-black text-brand-purple-dark dark:text-white mb-1">Edit Sekolah</h2>
             <p className="text-sm text-brand-purple font-bold mb-8 opacity-60 uppercase tracking-widest">Update Informasi</p>
 
             <form onSubmit={handleEditSchool} className="space-y-6">
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-gray-400 px-1">Nama Sekolah</label>
+                <label className="text-[10px] font-black uppercase text-gray-400 dark:text-gray-500 px-1">Nama Sekolah</label>
                 <input
                   type="text"
                   value={editSchoolName}
                   onChange={(e) => setEditSchoolName(e.target.value)}
-                  className="w-full bg-gray-50 border-2 border-transparent focus:border-brand-purple focus:bg-white rounded-2xl p-4 outline-none transition-all font-medium"
+                  className="w-full bg-gray-50 dark:bg-gray-800 dark:text-white border-2 border-transparent focus:border-brand-purple focus:bg-white rounded-2xl p-4 outline-none transition-all font-medium"
                   required
                 />
               </div>
@@ -377,7 +377,7 @@ export default function AdminSchoolsPage() {
                 <button
                   type="button"
                   onClick={() => setEditingSchool(null)}
-                  className="flex-1 px-6 py-4 bg-gray-100 text-gray-500 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-gray-200 transition-all"
+                  className="flex-1 px-6 py-4 bg-gray-100 text-gray-500 dark:text-gray-400 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-gray-200 transition-all"
                 >
                   Batal
                 </button>

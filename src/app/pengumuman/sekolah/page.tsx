@@ -57,7 +57,7 @@ export default function PengumumanSekolahPage() {
   }
 
   return (
-    <main className="min-h-screen pb-20 overflow-x-hidden">
+    <main className="min-h-screen pb-20 overflow-x-hidden dark:bg-black transition-colors duration-500">
       {/* Navbar / Header */}
       <nav className="sticky top-0 z-50 glass-card px-4 py-3 sm:px-6 mb-8 border-b border-white/50">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -67,22 +67,22 @@ export default function PengumumanSekolahPage() {
             <h1 className="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-purple hidden sm:block">Pengumuman</h1>
           </Link>
           <div className="flex items-center gap-4 sm:gap-6">
-            <Link href="/home" className="text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
+            <Link href="/home" className="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-brand-purple transition-colors uppercase tracking-wider">
               Home
             </Link>
-            <Link href="/" className="text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
+            <Link href="/" className="text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-brand-purple transition-colors uppercase tracking-wider">
               Booking
             </Link>
             <div className="relative group" tabIndex={0}>
               <button className="flex items-center gap-1 text-xs sm:text-sm font-bold text-brand-purple hover:text-brand-purple focus:text-brand-purple transition-colors uppercase tracking-wider">
                 Pengumuman <span className="text-[10px]">▼</span>
               </button>
-              <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all flex flex-col overflow-hidden z-50">
+              <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all flex flex-col overflow-hidden z-50">
                 <Link href="/pengumuman/sekolah" className="px-5 py-4 text-xs font-black text-brand-purple bg-brand-purple/5 uppercase tracking-wider">Daftar Partisipan Sekolah</Link>
-                <Link href="/pengumuman/perwakilan" className="px-5 py-4 text-xs font-black text-gray-600 hover:bg-brand-purple/5 hover:text-brand-purple border-t border-gray-50 uppercase tracking-wider">Daftar Siswa Perwakilan</Link>
+                <Link href="/pengumuman/perwakilan" className="px-5 py-4 text-xs font-black text-gray-600 dark:text-gray-400 hover:bg-brand-purple/5 hover:text-brand-purple border-t border-gray-50 uppercase tracking-wider">Daftar Siswa Perwakilan</Link>
               </div>
             </div>
-            <div className="hidden sm:flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+            <div className="hidden sm:flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
               Sistem Aktif
             </div>
@@ -93,10 +93,10 @@ export default function PengumumanSekolahPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 animate-fade-in">
         <div className="text-center space-y-4 max-w-3xl mx-auto py-6">
           <span className="inline-block px-4 py-1.5 bg-brand-purple/10 text-brand-purple rounded-full text-xs font-black uppercase tracking-widest mb-2 border border-brand-purple/20">Pengumuman</span>
-          <h2 className="text-4xl sm:text-5xl font-black text-brand-purple-dark tracking-tight uppercase">
+          <h2 className="text-4xl sm:text-5xl font-black text-brand-purple-dark dark:text-white tracking-tight uppercase">
             Partisipan <span className="text-brand-purple">Sekolah</span>
           </h2>
-          <p className="text-gray-500 font-medium">Daftar sekolah yang telah berpartisipasi dan mendaftar untuk kegiatan kunjungan roadshow Unmute.</p>
+          <p className="text-gray-500 dark:text-gray-400 font-medium">Daftar sekolah yang telah berpartisipasi dan mendaftar untuk kegiatan kunjungan roadshow Unmute.</p>
         </div>
 
         {loading ? (
@@ -109,14 +109,14 @@ export default function PengumumanSekolahPage() {
             <button onClick={fetchData} className="px-6 py-2 bg-brand-purple text-white rounded-xl font-bold premium-shadow">Coba Lagi</button>
           </div>
         ) : (
-          <div className="glass-card rounded-[2.5rem] overflow-hidden premium-shadow border border-white/50">
-            <div className="p-6 sm:p-8 border-b border-gray-100 flex justify-between items-center bg-white/50">
-              <h3 className="text-xl font-black text-brand-purple-dark uppercase">Total: <span className="text-brand-purple">{bookings.length} Sekolah</span></h3>
+          <div className="glass-card dark:bg-gray-900/50 rounded-[2.5rem] overflow-hidden premium-shadow border border-white/50">
+            <div className="p-6 sm:p-8 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-white/50">
+              <h3 className="text-xl font-black text-brand-purple-dark dark:text-white uppercase">Total: <span className="text-brand-purple">{bookings.length} Sekolah</span></h3>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="bg-brand-purple/5 text-gray-500 text-[10px] sm:text-xs font-black uppercase tracking-widest">
+                  <tr className="bg-brand-purple/5 text-gray-500 dark:text-gray-400 text-[10px] sm:text-xs font-black uppercase tracking-widest">
                     <th className="px-6 sm:px-8 py-5 text-center">No</th>
                     <th className="px-6 sm:px-8 py-5">Nama Sekolah</th>
                     <th className="px-6 sm:px-8 py-5">PIC</th>
@@ -128,9 +128,9 @@ export default function PengumumanSekolahPage() {
                   {bookings.length > 0 ? (
                     bookings.map((b, idx) => (
                       <tr key={b.id} className="glass-row-hover group/row transition-all duration-300">
-                        <td className="px-6 sm:px-8 py-5 text-center text-gray-400 font-bold">{idx + 1}</td>
-                        <td className="px-6 sm:px-8 py-5 font-black text-gray-800 group-hover/row:text-brand-purple transition-colors">{b.school_name}</td>
-                        <td className="px-6 sm:px-8 py-5 font-bold text-gray-600">{b.pic}</td>
+                        <td className="px-6 sm:px-8 py-5 text-center text-gray-400 dark:text-gray-500 font-bold">{idx + 1}</td>
+                        <td className="px-6 sm:px-8 py-5 font-black text-gray-800 dark:text-gray-200 group-hover/row:text-brand-purple transition-colors">{b.school_name}</td>
+                        <td className="px-6 sm:px-8 py-5 font-bold text-gray-600 dark:text-gray-400">{b.pic}</td>
                         <td className="px-6 sm:px-8 py-5">
                           <span className="inline-block px-3 py-1.5 rounded-xl bg-brand-purple/5 text-brand-purple text-[10px] sm:text-xs font-black border border-brand-purple/10">
                             {formatLongDate(b.date)}
@@ -146,7 +146,7 @@ export default function PengumumanSekolahPage() {
                       </tr>
                     ))
                   ) : (
-                    <tr><td colSpan={5} className="px-6 py-20 text-center text-gray-400 font-medium">Belum ada sekolah yang berpartisipasi.</td></tr>
+                    <tr><td colSpan={5} className="px-6 py-20 text-center text-gray-400 dark:text-gray-500 font-medium">Belum ada sekolah yang berpartisipasi.</td></tr>
                   )}
                 </tbody>
               </table>
