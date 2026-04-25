@@ -225,6 +225,12 @@ export default function AdminSchoolsPage() {
             >
               Dashboard
             </button>
+            <button
+              onClick={() => router.push("/admin/delegates")}
+              className="px-4 py-2 bg-brand-lime/20 text-brand-purple-dark rounded-xl text-sm font-black uppercase tracking-wider hover:bg-brand-lime hover:text-brand-purple-dark transition-all ml-2"
+            >
+              Perwakilan
+            </button>
           </div>
 
           <button

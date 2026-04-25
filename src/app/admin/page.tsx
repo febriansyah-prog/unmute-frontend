@@ -21,6 +21,7 @@ type Booking = {
   school_name: string;
   pic: string;
   phone: string;
+  status: string;
 };
 
 type Toast = {
@@ -211,6 +212,30 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleMarkVisited = async (booking: Booking) => {
+    if (typeof window === "undefined") return;
+    const confirmed = window.confirm(`Tandai kunjungan ke ${booking.school_name} selesai? Sekolah ini akan masuk ke menu Perwakilan.`);
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`${API_URL}/api/bookings/${booking.id}/status`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "Telah Dikunjungi" })
+      });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        showToast("error", result.message || "Gagal memperbarui status");
+        return;
+      }
+      showToast("success", "Status berhasil diperbarui");
+      await fetchData();
+    } catch (err) {
+      console.error(err);
+      showToast("error", "Server error saat memperbarui status");
+    }
+  };
+
   const totalSchools = schools.length;
   const totalBookings = bookings.length;
   const bookedSchoolsCount = new Set(bookings.map((b) => b.school_name)).size;
@@ -260,6 +285,12 @@ export default function AdminDashboard() {
               className="px-4 py-2 bg-brand-purple/5 text-brand-purple rounded-xl text-sm font-black uppercase tracking-wider hover:bg-brand-purple hover:text-white transition-all"
             >
               Sekolah
+            </button>
+            <button
+              onClick={() => router.push("/admin/delegates")}
+              className="px-4 py-2 bg-brand-lime/20 text-brand-purple-dark rounded-xl text-sm font-black uppercase tracking-wider hover:bg-brand-lime hover:text-brand-purple-dark transition-all"
+            >
+              Perwakilan
             </button>
             <button
               onClick={handleLogout}
@@ -334,6 +365,7 @@ export default function AdminDashboard() {
                       <th className="px-8 py-5">PIC</th>
                       <th className="px-8 py-5">No HP</th>
                       <th className="px-8 py-5">Tanggal</th>
+                      <th className="px-8 py-5 text-center">Status</th>
                       <th className="px-8 py-5 text-center">Opsi</th>
                     </tr>
                   </thead>
@@ -350,10 +382,20 @@ export default function AdminDashboard() {
                               {formatLongDate(b.date)}
                             </span>
                           </td>
+                          <td className="px-8 py-6 text-center">
+                            <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border ${
+                              b.status === "Telah Dikunjungi" ? "bg-green-50 text-green-600 border-green-100" : "bg-orange-50 text-orange-500 border-orange-100"
+                            }`}>
+                              {b.status || "Menunggu"}
+                            </span>
+                          </td>
                           <td className="px-8 py-6">
                             <div className="flex justify-center gap-2">
-                              <button onClick={() => handleEditBooking(b)} className="w-10 h-10 rounded-xl bg-brand-lime/20 text-brand-purple-dark hover:bg-brand-lime transition-all flex items-center justify-center">✏️</button>
-                              <button onClick={() => handleDeleteBooking(b)} className="w-10 h-10 rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">🗑️</button>
+                              {b.status !== "Telah Dikunjungi" && (
+                                <button onClick={() => handleMarkVisited(b)} title="Tandai Telah Dikunjungi" className="w-10 h-10 rounded-xl bg-green-50 text-green-600 hover:bg-green-500 hover:text-white transition-all flex items-center justify-center">✅</button>
+                              )}
+                              <button onClick={() => handleEditBooking(b)} title="Edit Booking" className="w-10 h-10 rounded-xl bg-brand-lime/20 text-brand-purple-dark hover:bg-brand-lime transition-all flex items-center justify-center">✏️</button>
+                              <button onClick={() => handleDeleteBooking(b)} title="Hapus Booking" className="w-10 h-10 rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">🗑️</button>
                             </div>
                           </td>
                         </tr>
