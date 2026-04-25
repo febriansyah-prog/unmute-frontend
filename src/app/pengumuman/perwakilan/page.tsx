@@ -60,11 +60,11 @@ export default function PengumumanPerwakilanPage() {
             <Link href="/" className="text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
               Booking
             </Link>
-            <div className="relative group">
-              <button className="flex items-center gap-1 text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
+            <div className="relative group" tabIndex={0}>
+              <button className="flex items-center gap-1 text-xs sm:text-sm font-bold text-brand-purple hover:text-brand-purple focus:text-brand-purple transition-colors uppercase tracking-wider">
                 Pengumuman <span className="text-[10px]">▼</span>
               </button>
-              <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col overflow-hidden z-50">
+              <div className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all flex flex-col overflow-hidden z-50">
                 <Link href="/pengumuman/sekolah" className="px-5 py-4 text-xs font-black text-gray-600 hover:bg-brand-purple/5 hover:text-brand-purple border-b border-gray-50 uppercase tracking-wider">Daftar Partisipan Sekolah</Link>
                 <Link href="/pengumuman/perwakilan" className="px-5 py-4 text-xs font-black text-brand-purple bg-brand-purple/5 uppercase tracking-wider">Daftar Siswa Perwakilan</Link>
               </div>
