@@ -10,12 +10,31 @@ export default function MusicPlayer() {
     // Attempt to autoplay on mount (might be blocked by browser)
     if (audioRef.current) {
       audioRef.current.volume = 0.3; // Set volume to 30%
-      audioRef.current.play().then(() => {
-        setIsPlaying(true);
-      }).catch((e) => {
-        console.log("Autoplay blocked by browser. User needs to interact first.", e);
-        // We will wait for user to click the play button
-      });
+      const playPromise = audioRef.current.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setIsPlaying(true);
+        }).catch((e) => {
+          console.log("Autoplay blocked by browser. User needs to interact first.");
+          
+          // Add a global one-time interaction listener to start the music smoothly
+          const startAudioOnInteract = () => {
+            if (audioRef.current) {
+              audioRef.current.play().then(() => {
+                setIsPlaying(true);
+              }).catch(() => {});
+            }
+            document.removeEventListener("click", startAudioOnInteract);
+            document.removeEventListener("touchstart", startAudioOnInteract);
+            document.removeEventListener("scroll", startAudioOnInteract);
+          };
+
+          document.addEventListener("click", startAudioOnInteract);
+          document.addEventListener("touchstart", startAudioOnInteract);
+          document.addEventListener("scroll", startAudioOnInteract, { once: true });
+        });
+      }
     }
   }, []);
 
