@@ -45,8 +45,11 @@ export default function RootLayout({
             <p className="text-sm sm:text-base font-medium opacity-90">Jl. Prof. Abdurrahman Basalamah No. 101 C, Panaikang,</p>
             <p className="text-sm sm:text-base font-medium opacity-90">Kec. Panakkukang, Kota Makassar, Sulawesi Selatan</p>
             <div className="h-px w-24 bg-white/20 mx-auto my-6"></div>
-            <p className="text-[10px] sm:text-xs font-bold text-white/50 tracking-widest uppercase">
+            <p className="text-[10px] sm:text-xs font-bold text-white/50 tracking-widest uppercase mb-1">
               Copyright &copy; 2026 Universitas Fajar. All rights reserved.
+            </p>
+            <p className="text-[10px] sm:text-xs font-medium text-white/40 tracking-wider mt-2">
+              Developed by <span className="font-bold text-brand-lime/80">Febriansyah, S.Kom., MT</span> | 📱 081342307597
             </p>
           </div>
         </footer>
