@@ -40,10 +40,10 @@ export default function HomePublicPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/5 to-brand-lime/10 -z-10"></div>
           <span className="inline-block px-4 py-1.5 bg-brand-purple/10 text-brand-purple rounded-full text-xs font-black uppercase tracking-widest mb-6 border border-brand-purple/20">Selamat Datang di Unmute</span>
           <h2 className="text-4xl sm:text-6xl font-black text-brand-purple-dark tracking-tight uppercase leading-tight mb-6">
-            Menyuarakan <span className="text-brand-purple underline decoration-brand-lime decoration-8">Potensi</span> Generasi Muda
+            Membangun <span className="text-brand-purple underline decoration-brand-lime decoration-8">Karakter</span> Menginspirasi Negeri
           </h2>
           <p className="text-gray-500 text-lg sm:text-xl font-medium max-w-3xl mx-auto mb-10">
-            Platform roadshow inovatif untuk menemukan, membina, dan menampilkan bakat-bakat terbaik dari berbagai sekolah.
+            Sebuah inisiatif pengabdian masyarakat oleh Universitas Fajar yang mendedikasikan keahlian akademis untuk memberdayakan potensi siswa-siswi di seluruh Sulawesi Selatan.
           </p>
           <div className="flex justify-center gap-4">
             <Link href="/" className="px-8 py-4 bg-brand-purple text-white rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-transform premium-shadow">
@@ -52,29 +52,29 @@ export default function HomePublicPage() {
           </div>
         </div>
 
-        {/* Content Placeholders */}
+        {/* Content Details */}
         <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
           <div className="glass-card rounded-[2rem] p-8 sm:p-10 premium-shadow border border-white/50 hover:-translate-y-2 transition-transform">
-            <div className="w-14 h-14 bg-brand-purple/10 rounded-2xl flex items-center justify-center text-3xl mb-6">🏢</div>
-            <h3 className="text-2xl font-black text-brand-purple-dark uppercase mb-4">Penyelenggara</h3>
+            <div className="w-14 h-14 bg-brand-purple/10 rounded-2xl flex items-center justify-center text-3xl mb-6">🏛️</div>
+            <h3 className="text-2xl font-black text-brand-purple-dark uppercase mb-4">Inisiatif & Kolaborasi</h3>
             <p className="text-gray-500 font-medium leading-relaxed">
-              [Bagian ini akan diisi dengan informasi lengkap mengenai siapa penyelenggara acara, visi, misi, dan latar belakang diadakannya roadshow ini.]
+              <strong className="text-brand-purple-dark">Unmute by Unifers</strong> adalah manifestasi nyata dari Tri Dharma Perguruan Tinggi yang diinisiasi oleh <strong className="text-brand-purple-dark">Universitas Fajar (Unifa)</strong>. Menggandeng mitra strategis <strong className="text-brand-purple-dark">Kelas Bebas Berbicara</strong> dan didukung penuh oleh <strong className="text-brand-purple-dark">Dinas Pendidikan Provinsi Sulawesi Selatan</strong>, program ini menghadirkan dedikasi para dosen berdampak untuk terjun langsung memajukan ekosistem pendidikan.
             </p>
           </div>
 
           <div className="glass-card rounded-[2rem] p-8 sm:p-10 premium-shadow border border-white/50 hover:-translate-y-2 transition-transform">
             <div className="w-14 h-14 bg-brand-lime/20 rounded-2xl flex items-center justify-center text-3xl mb-6">🌟</div>
-            <h3 className="text-2xl font-black text-brand-purple-dark uppercase mb-4">Manfaat</h3>
+            <h3 className="text-2xl font-black text-brand-purple-dark uppercase mb-4">Nilai & Kontribusi</h3>
             <p className="text-gray-500 font-medium leading-relaxed">
-              [Bagian ini akan diisi dengan detail manfaat yang akan didapatkan oleh siswa maupun pihak sekolah yang berpartisipasi dalam rangkaian acara ini.]
+              Lebih dari sekadar berbagi ilmu, kegiatan ini dirancang sebagai ruang eskalasi kompetensi. Melalui transfer keterampilan praktis abad ke-21, sivitas akademika <strong className="text-brand-purple-dark">Universitas Fajar</strong> berkomitmen kuat mencetak generasi muda yang adaptif, percaya diri, dan siap bersaing secara global di era digital.
             </p>
           </div>
 
           <div className="glass-card rounded-[2rem] p-8 sm:p-10 premium-shadow border border-white/50 hover:-translate-y-2 transition-transform">
             <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-3xl mb-6">📈</div>
-            <h3 className="text-2xl font-black text-brand-purple-dark uppercase mb-4">Dampak</h3>
+            <h3 className="text-2xl font-black text-brand-purple-dark uppercase mb-4">Visi Berkelanjutan</h3>
             <p className="text-gray-500 font-medium leading-relaxed">
-              [Bagian ini akan diisi dengan target pencapaian dan dampak positif jangka panjang yang diharapkan dari kegiatan Bootcamp & Final Unmute.]
+              Komitmen kami tidak berhenti pada ruang kelas. Kami bertekad menjaring dan membina talenta-talenta unggul melalui program pendampingan intensif. Inisiatif berkelanjutan ini merupakan wujud nyata kontribusi akademisi dalam mencetak calon pemimpin masa depan yang berwawasan luas dan penuh inovasi.
             </p>
           </div>
         </div>
