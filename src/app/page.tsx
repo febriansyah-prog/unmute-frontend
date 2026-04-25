@@ -4,10 +4,10 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 // Robust API URL detection
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 
-                (typeof window !== "undefined" && window.location.hostname === "localhost" 
-                  ? "http://localhost:3001" 
-                  : "https://unmute-backend-production.up.railway.app");
+const API_URL = process.env.NEXT_PUBLIC_API_URL ||
+  (typeof window !== "undefined" && window.location.hostname === "localhost"
+    ? "http://localhost:3001"
+    : "https://unmute-backend-production.up.railway.app");
 
 type School = {
   id: string;
@@ -122,13 +122,21 @@ export default function Home() {
   const fetchSchools = async () => {
     const res = await fetch(`${API_URL}/api/schools`);
     const data = await res.json();
-    setSchools(data);
+    if (Array.isArray(data)) {
+      setSchools(data);
+    } else {
+      throw new Error(data.message || "Invalid data format from API");
+    }
   };
 
   const fetchBookings = async () => {
     const res = await fetch(`${API_URL}/api/bookings`);
     const data = await res.json();
-    setBookings(data);
+    if (Array.isArray(data)) {
+      setBookings(data);
+    } else {
+      throw new Error(data.message || "Invalid data format from API");
+    }
   };
 
   useEffect(() => {
@@ -272,12 +280,13 @@ export default function Home() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12 animate-fade-in">
         
+        {/* Hero Section */}
         <div className="text-center space-y-4 max-w-2xl mx-auto py-6">
           <h1 className="text-4xl sm:text-5xl font-black text-brand-purple-dark tracking-tight">
             Booking <span className="text-brand-purple underline decoration-brand-lime decoration-8">Kunjungan</span> Roadshow
           </h1>
           <p className="text-gray-600 text-base sm:text-lg">
-            Amankan jadwal sekolahmu untuk ikut keseruan roadshow Unmute. Sebuah program spesial persembahan Universitas Fajar untuk mendukung kreativitas dan semangat generasi muda.
+            Amankan jadwal sekolahmu untuk ikut keseruan roadshow Unmute. Pilih sekolah, isi data, dan tentukan tanggalnya.
           </p>
         </div>
 
@@ -569,23 +578,10 @@ export default function Home() {
         )}
       </div>
 
-      {/* Footer / Universitas Fajar Identity */}
-      <footer className="mt-20 border-t border-brand-purple/10 bg-white/50 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
-            <div className="text-lg font-black text-brand-purple-dark tracking-widest">
-              UNIVERSITAS FAJAR
-            </div>
-            <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-brand-lime"></div>
-            <p className="text-xs sm:text-sm text-gray-500 font-medium">
-              Penyelenggara Resmi Roadshow Unmute 2026
-            </p>
-          </div>
-          <div className="text-xs font-bold text-gray-400">
-            &copy; 2026 Universitas Fajar. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      {/* Footer Decoration */}
+      <div className="mt-20 py-10 text-center opacity-30 grayscale pointer-events-none">
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-purple">Created with ❤️ for Unmute Roadshow 2026</p>
+      </div>
     </main>
   );
 }

@@ -74,6 +74,9 @@ export default function AdminSchoolsPage() {
       if (!schoolsRes.ok || !bookingsRes.ok) throw new Error("Gagal mengambil data");
       const schoolsData = await schoolsRes.json();
       const bookingsData = await bookingsRes.json();
+      if (!Array.isArray(schoolsData) || !Array.isArray(bookingsData)) {
+        throw new Error("Invalid data format from API");
+      }
       setSchools(schoolsData);
       setBookings(bookingsData);
     } catch (err) {
