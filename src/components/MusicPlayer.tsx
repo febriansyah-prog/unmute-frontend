@@ -23,16 +23,18 @@ export default function MusicPlayer() {
             if (audioRef.current) {
               audioRef.current.play().then(() => {
                 setIsPlaying(true);
-              }).catch(() => {});
+                document.removeEventListener("click", startAudioOnInteract);
+                document.removeEventListener("touchstart", startAudioOnInteract);
+                document.removeEventListener("keydown", startAudioOnInteract);
+              }).catch(() => {
+                // If it still fails, keep the listeners active
+              });
             }
-            document.removeEventListener("click", startAudioOnInteract);
-            document.removeEventListener("touchstart", startAudioOnInteract);
-            document.removeEventListener("scroll", startAudioOnInteract);
           };
 
           document.addEventListener("click", startAudioOnInteract);
           document.addEventListener("touchstart", startAudioOnInteract);
-          document.addEventListener("scroll", startAudioOnInteract, { once: true });
+          document.addEventListener("keydown", startAudioOnInteract);
         });
       }
     }
