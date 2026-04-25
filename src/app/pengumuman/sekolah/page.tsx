@@ -67,6 +67,12 @@ export default function PengumumanSekolahPage() {
             <h1 className="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-purple hidden sm:block">Pengumuman</h1>
           </Link>
           <div className="flex items-center gap-4 sm:gap-6">
+            <Link href="/home" className="text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
+              Home
+            </Link>
+            <Link href="/" className="text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
+              Booking
+            </Link>
             <div className="relative group">
               <button className="flex items-center gap-1 text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
                 Pengumuman <span className="text-[10px]">▼</span>

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 // Robust API URL detection
 const API_URL = process.env.NEXT_PUBLIC_API_URL ||
@@ -272,6 +273,12 @@ export default function Home() {
             <h1 className="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-purple-dark hidden sm:block">Portal <span className="text-brand-purple">Booking</span></h1>
           </div>
           <div className="flex items-center gap-4 sm:gap-6">
+            <Link href="/home" className="text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
+              Home
+            </Link>
+            <Link href="/" className="text-xs sm:text-sm font-bold text-brand-purple hover:text-brand-purple-light transition-colors uppercase tracking-wider">
+              Booking
+            </Link>
             <div className="relative group">
               <button className="flex items-center gap-1 text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-purple transition-colors uppercase tracking-wider">
                 Pengumuman <span className="text-[10px]">▼</span>
