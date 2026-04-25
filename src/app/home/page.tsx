@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function HomePublicPage() {
   return (
-    <main className="min-h-screen pb-20 overflow-x-hidden">
+    <main className="min-h-screen pb-20 overflow-x-hidden dark:bg-black transition-colors duration-500">
       {/* Navbar / Header */}
-      <nav className="sticky top-0 z-50 glass-card px-4 py-3 sm:px-6 mb-8 border-b border-white/50">
+      <nav className="sticky top-0 z-50 glass-card dark:bg-black/50 px-4 py-3 sm:px-6 mb-8 border-b border-white/50 dark:border-gray-800 transition-colors duration-500">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/home" className="flex items-center gap-3 group">
             <Image src="/logo.png" alt="Unmute by Unifers" width={150} height={50} className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform" priority />
@@ -34,12 +36,17 @@ export default function HomePublicPage() {
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 animate-fade-in">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Hero Banner Placeholder */}
-        <div className="glass-card rounded-[2.5rem] p-10 sm:p-20 text-center premium-shadow relative overflow-hidden border border-white/50">
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/5 to-brand-lime/10 -z-10"></div>
-          <span className="inline-block px-4 py-1.5 bg-brand-purple/10 text-brand-purple rounded-full text-xs font-black uppercase tracking-widest mb-6 border border-brand-purple/20">Selamat Datang di Unmute</span>
-          <h2 className="text-4xl sm:text-6xl font-black text-brand-purple-dark tracking-tight uppercase leading-tight mb-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="glass-card dark:bg-gray-900/40 rounded-[2.5rem] p-10 sm:p-20 text-center premium-shadow relative overflow-hidden border border-white/50 dark:border-gray-800 transition-colors duration-500"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/5 to-brand-lime/10 dark:from-brand-purple/10 dark:to-brand-lime/5 -z-10 transition-colors duration-500"></div>
+          <span className="inline-block px-4 py-1.5 bg-brand-purple/10 dark:bg-brand-purple/20 text-brand-purple dark:text-brand-lime rounded-full text-xs font-black uppercase tracking-widest mb-6 border border-brand-purple/20 dark:border-brand-lime/20 transition-colors">Selamat Datang di Unmute</span>
+          <h2 className="text-4xl sm:text-6xl font-black text-brand-purple-dark dark:text-white tracking-tight uppercase leading-tight mb-10 transition-colors">
             Membangun <span className="text-brand-purple underline decoration-brand-lime decoration-8">Karakter</span> Menginspirasi Negeri
           </h2>
 
@@ -64,50 +71,68 @@ export default function HomePublicPage() {
               <Image src="/logo-unmute-large.png" alt="Unmute by Unifers" width={300} height={150} className="h-32 sm:h-40 w-auto object-contain hover:scale-105 transition-transform duration-500 relative z-10 drop-shadow-2xl" />
             </div>
             
-            <p className="text-gray-500 text-base sm:text-lg font-medium max-w-3xl mx-auto text-center mt-4 px-4">
-              <strong className="text-brand-purple-dark">Sebuah inisiatif pengabdian masyarakat oleh Universitas Fajar.</strong> Menargetkan pelatihan intensif untuk <strong className="text-brand-purple">5.000 siswa-siswi tingkat SMA, SMK, dan MA</strong> di seluruh Sulawesi Selatan guna mencetak talenta muda yang adaptif di era digital.
+            <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg font-medium max-w-3xl mx-auto text-center mt-4 px-4 transition-colors">
+              <strong className="text-brand-purple-dark dark:text-brand-lime">Sebuah inisiatif pengabdian masyarakat oleh Universitas Fajar.</strong> Menargetkan pelatihan intensif untuk <strong className="text-brand-purple dark:text-white">5.000 siswa-siswi tingkat SMA, SMK, dan MA</strong> di seluruh Sulawesi Selatan guna mencetak talenta muda yang adaptif di era digital.
             </p>
           </div>
 
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-4 mt-8">
             <Link href="/" className="px-8 py-4 bg-brand-purple text-white rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-transform premium-shadow">
               Booking Sekarang
             </Link>
           </div>
-        </div>
+        </motion.div>
 
         {/* Features / Content Blocks */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mt-16 max-w-6xl mx-auto px-4 z-10 relative">
           
-          <div className="glass-card p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-purple/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)]">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-purple/50 dark:border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
+          >
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light dark:from-brand-purple-dark dark:to-brand-purple text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
               <span className="text-3xl sm:text-4xl">🎙️</span>
             </div>
-            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Public Speaking</h3>
-            <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark dark:text-white uppercase tracking-wide mb-4 group-hover:text-brand-purple dark:group-hover:text-brand-lime transition-colors">Public Speaking</h3>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
               Meningkatkan kepercayaan diri dan seni berbicara di depan umum secara memukau, dirancang khusus untuk menggali potensi kepemimpinan siswa-siswi di bangku sekolah.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="glass-card p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-lime/80 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,253,31,0.15)]">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-lime/80 dark:border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,253,31,0.15)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
+          >
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-lime to-brand-lime-hover text-brand-purple-dark rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
               <span className="text-3xl sm:text-4xl">💻</span>
             </div>
-            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Artificial Intelligence (AI)</h3>
-            <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark dark:text-white uppercase tracking-wide mb-4 group-hover:text-brand-purple dark:group-hover:text-brand-lime transition-colors">Artificial Intelligence (AI)</h3>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
               Membekali siswa dengan pemahaman dasar Kecerdasan Buatan (AI) serta penerapannya yang inovatif dan etis untuk mendukung proses pembelajaran di dunia pendidikan modern.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="glass-card p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-purple/50 transition-all duration-300 sm:col-span-2 lg:col-span-1 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)]">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="glass-card dark:bg-gray-900/50 p-6 sm:p-8 lg:p-10 rounded-3xl premium-shadow flex flex-col items-center text-center group hover:border-brand-purple/50 dark:border-gray-800 transition-all duration-300 sm:col-span-2 lg:col-span-1 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(79,38,166,0.1)] dark:hover:shadow-[0_20px_40px_rgba(217,253,31,0.05)]"
+          >
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-purple to-brand-purple-light dark:from-brand-purple-dark dark:to-brand-purple text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
               <span className="text-3xl sm:text-4xl">🚀</span>
             </div>
-            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark uppercase tracking-wide mb-4 group-hover:text-brand-purple transition-colors">Content Creator</h3>
-            <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+            <h3 className="text-lg sm:text-xl font-black text-brand-purple-dark dark:text-white uppercase tracking-wide mb-4 group-hover:text-brand-purple dark:group-hover:text-brand-lime transition-colors">Content Creator</h3>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
               Membuka wawasan generasi muda terhadap peluang ekonomi kreatif di era digital, melalui strategi produksi konten visual dan naratif yang positif serta berdampak luas.
             </p>
-          </div>
+          </motion.div>
 
         </div>
 

@@ -38,8 +38,18 @@ body {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
 }
 
+.dark .glass-card {
+  background: rgba(10, 10, 10, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
 .premium-shadow {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+.dark .premium-shadow {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes fadeIn {
@@ -107,5 +117,10 @@ body {
   box-shadow: 0 4px 15px rgba(79, 38, 166, 0.08);
   z-index: 10;
   position: relative;
+}
+
+.dark .glass-row-hover:hover {
+  background: rgba(30, 30, 30, 0.9);
+  box-shadow: 0 4px 15px rgba(217, 253, 31, 0.1);
 }
 
