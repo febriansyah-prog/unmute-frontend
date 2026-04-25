@@ -45,6 +45,18 @@ export default function HomePublicPage() {
           <p className="text-gray-500 text-lg sm:text-xl font-medium max-w-3xl mx-auto mb-10">
             Sebuah inisiatif pengabdian masyarakat oleh Universitas Fajar yang mendedikasikan keahlian akademis untuk memberdayakan potensi siswa-siswi di seluruh Sulawesi Selatan.
           </p>
+
+          <div className="flex flex-col items-center gap-6 sm:gap-8 mb-12">
+            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-14">
+              <Image src="/logo-unifa.png" alt="Universitas Fajar" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-105 transition-transform" />
+              <Image src="/logo-sulsel.png" alt="Provinsi Sulawesi Selatan" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-105 transition-transform" />
+              <Image src="/logo-kbb.png" alt="Kelas Bebas Bicara" width={120} height={120} className="h-20 sm:h-28 w-auto object-contain hover:scale-105 transition-transform" />
+            </div>
+            <div className="flex justify-center mt-4">
+              <Image src="/logo-unmute-large.png" alt="Unmute by Unifers" width={300} height={150} className="h-32 sm:h-40 w-auto object-contain hover:scale-105 transition-transform drop-shadow-md" />
+            </div>
+          </div>
+
           <div className="flex justify-center gap-4">
             <Link href="/" className="px-8 py-4 bg-brand-purple text-white rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-transform premium-shadow">
               Booking Sekarang
